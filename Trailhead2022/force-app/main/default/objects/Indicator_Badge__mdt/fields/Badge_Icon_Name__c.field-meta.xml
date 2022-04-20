@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Badge_Icon_Name__c</fullName>
+    <defaultValue>&apos;standard:announcement&apos;</defaultValue>
+    <description>SLDS name of icon to display.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Should follow &lt;lightning:icon /&gt; naming convention (ex: standard:user, action:freeze_user)</inlineHelpText>
+    <label>Badge Icon Name</label>
+    <length>55</length>
+    <required>true</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

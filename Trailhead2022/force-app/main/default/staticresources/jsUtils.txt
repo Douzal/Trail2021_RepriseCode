@@ -1,0 +1,98 @@
+/********************************************************************************************************************************
+ *        Une classe avec de l'utilitaire JS -- AMA 12/2019                                                                     *
+ *                                                                                                                              *
+ *      /!\ REQUIRE JQUERY /!\                                                                                                  *
+ *      For this to work, you need to use jQuery.resource on the VFP : copy to clipboard and include the following line :       *
+ *      <apex:includeScript value="{!$Resource.jQuery}" /> or                                                                   *
+ *       <ltng:require scripts="{! $Resource.jQuery }" afterScriptsLoaded="{! c.loadJquery }" />                                *
+ *                                                                                                                              *
+ *******************************************************************************************************************************/
+
+
+
+    /**
+    *    Usefull to display or hide modals (with an id) in LIGHTNING component
+    *
+    * @param : idComp
+    * @param : showOrHide boolean, true if you wanna show
+    * @param : jqOk boolean, false if jQuery not usable
+    */
+    showComponentById : function(idComp, showOrHide, jqOk) {
+
+        if(jqOk) {
+            // JQUERY OK !
+            let cmp = $('#' + idComp);
+            // console.log('html récupéré : ', cmp.html());
+
+            if(showOrHide) {
+                cmp.removeClass('slds-hide'); // try with jQuery but does not work yet
+            } else {
+                cmp.addClass('slds-hide'); // try with jQuery but does not work yet
+            }
+        } else {
+            // JQUERY UNUSABLE
+            let cmp = document.getElementById(idComp);
+            let cmpClassname = cmp.className;
+
+            if(showOrHide) {
+                //console.log('show component ', idComp)
+                cmpClassname = cmpClassname.replace('slds-hide', ''); // show
+            } else {
+                //console.log('hide component ', idComp);
+                cmpClassname+=' slds-hide'; // hide
+            }
+            // reassigner la bonne classe
+            cmp.className=cmpClassname;
+        }
+        // display information about the use of jQuery
+        /*let infosOnjQueryMsg = (jqOk?'Avec jQuery':'Sans jQuery...');
+        console.log(infosOnjQueryMsg);*/
+    }
+
+
+        /**
+         * refHorloge récupère l'heure actuelle
+         * et l'affiche dans l'élément d'id idHorl
+         */
+         refHorloge : function(cmp, event, helper) {
+            // get la date en hh:mm:ss
+            let maintenant = new Date();
+            let mS = maintenant.getSeconds();
+            let mM = maintenant.getMinutes();
+            let mH = maintenant.getHours();
+
+            // TODO : ajouter la gestion des cas ou on n'a qu'un chiffre :
+            // a adapter :
+
+                   if(mS.length == 1) {
+                        mS = '0' + ms;
+                    }
+
+            maintenant = mH +':'+mM+':'+mS;
+
+            return maintenant;
+        },
+
+        refDay : function(cmp, event, helper) {
+            var maintenant = new Date();
+            var days = ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+            var months = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre']
+            var dd = String(maintenant.getDate()).padStart(2, '0');
+            var day = days[maintenant.getDay()];
+            var month = months[maintenant.getMonth()];
+            var mm = String(maintenant.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = maintenant.getFullYear();
+
+            var fullDate = day + ' ' + dd + ' ' + month + ' ' + yyyy; // mm + '/' + dd + '/' + yyyy;
+            return fullDate;
+        }
+
+        /**
+        * Et voici comment on lance l'affichage de l'heure
+        */
+        setInterval(function() {
+            let date = helper.refDay();
+            //date += '     -     ' + helper.refHorloge();
+
+            $('#date').text(date)
+         }, 1000);

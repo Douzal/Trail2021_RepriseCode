@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#000000</headerColor>
+        <logo>ADM_Scurit_Enregistrements_Schma</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <description>Une app pour tenter d&apos;y foutre une putain de barre utilitaire de mes deux.</description>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <label>myApp</label>
+    <navType>Standard</navType>
+    <tabs>standard-Account</tabs>
+    <tabs>MyData</tabs>
+    <tabs>standard-Today</tabs>
+    <tabs>standard-Award</tabs>
+    <tabs>standard-Campaign</tabs>
+    <tabs>standard-Feed</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>myApp_UtilityBar</utilityBar>
+</CustomApplication>
