@@ -20,12 +20,15 @@ header {
 
 .plus {
   background-color: #f67280;
+  border-color: #f67280; /* ajout */
 }
 
 .moins {
   background-color: #ffa372;
+  border-color: #ffa372;
 }
 
 .fini {
   background-color : #0c9463;
+  border-color : #0c9463;
 }
