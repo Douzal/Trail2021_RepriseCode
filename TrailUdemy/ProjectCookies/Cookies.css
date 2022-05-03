@@ -1,0 +1,24 @@
+h1 {
+    color: #272343;
+    color: whitesmoke;
+    border: 0.2em ridge rgba(211, 220, 50, .6);
+  }
+
+#price {
+    font-size: 4em;
+    border: 0.2em ridge rgba(211, 220, 50, .6);
+}
+
+p {
+    text-align: center;
+    margin: 2em;
+    border: 1em ridge rgba(211, 220, 50, .6);
+}
+
+body {
+    /* background-color: rgb(68, 128, 0); */
+    background: linear-gradient(blue, purple);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: whitesmoke;
+
+}

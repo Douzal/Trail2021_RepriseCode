@@ -30,7 +30,8 @@ $(function() { // jQuery plus rapide
           spVille.text(resp.name);
           spTemperatureLbl.text(resp.main.temp);
         } else {
-          alert('--\tTemporary unable to join website and load datas\nPlease try again later --');
+          spVille.text('--\tTemporary unable to join website and load datas\nPlease try again later --');
+          console.log('--\tTemporary unable to join website and load datas\nPlease try again later --');
         }
       }
     }
@@ -72,11 +73,13 @@ $(function() { // jQuery plus rapide
 
   const prom = chargerCSS('ProjectGeoloc.css');
   prom.then(
-    function (ds) {
-      console.log(ds);
+    /* succes */
+    function (succ) {
+      console.log(succ);
     },
+    /* erreur */
     function (err) {
-  console.log(err);      
+      console.log(err);      
     }
   );
 
@@ -89,28 +92,27 @@ $(function() { // jQuery plus rapide
   /////
   /* RECAP POUR VERIFIER L'ACQUIS : TEST DE CHARGEMNT D'UN SCRIPT */
 
-  function chargerScript(scriptName) {
-    return new Promise((ok, pasOk) => { // (resolve, reject)
+  // function chargerScript(scriptName) {
+  //   return new Promise((ok, pasOk) => { // (resolve, reject)
 
-      /* create element */
-      let newScript = document.createElement('script');
-      // newScript.setAttribute('type', 'text/javascript');
-      // newScript.setAttribute('src', scriptName);
-      newScript.type  = 'text/javascript';
-      newScript.src   = scriptName;
-      document.head.append(newScript)
+  //     /* create element */
+  //     let newScript = document.createElement('script');
+  //     // newScript.setAttribute('type', 'text/javascript');
+  //     // newScript.setAttribute('src', scriptName);
+  //     newScript.type  = 'text/javascript';
+  //     newScript.src   = scriptName;
+  //     document.head.append(newScript)
 
-      /* case resolve */
-      newScript.onload = () => ok (`\n\tOK load script : ${scriptName}`); 
+  //     /* case resolve */
+  //     newScript.onload = () => ok (`\n\tOK load script : ${scriptName}`); 
 
-      /* case abort */
-      newScript.onerror = () => pasOk(new Error (`\n\tPAS OK load script : ${scriptName}`));
-    });
-
-  }
+  //     /* case abort */
+  //     newScript.onerror = () => pasOk(new Error (`\n\tPAS OK load script : ${scriptName}`));
+  //   });
+  // }
 
   /* call promise */
-  const prometMoi = chargerScript('test.js');
+  /* const prometMoi = chargerScript('test.js');
   prometMoi.then(
     function (err) {
       console.log(err);
@@ -118,12 +120,58 @@ $(function() { // jQuery plus rapide
     function (res) {
       console.log(`\n\tCASE ERR : ${res}`);
     }
-  )
+  ) */
 
   /* permet uniquement de log si erreur
      nb : noter le console.log sans parenthèses*/
-  chargerScript('test.js').catch(console.log());
+  // chargerScript('test.js').catch(console.log());
     
-  ////
+  ///////
+  /* await et async */
+  function chargerScript2 (nomScript) {
+    return new Promise((resolve, reject) => {
+      let el = document.createElement('script');
+      el.type = 'text/javascript';
+      el.src = nomScript;
+      document.body.append(el);
+
+      el.onload = () => resolve(console.log(nomScript + ' : script chargé'));
+      el.onerror = () => reject(new Error(nomScript + ' : nop script pas chargé'));
+      
+    })  
+  }
+
+  // let prom = chargerScript2('nomScSS');
+  // prom.then(function res(res) {
+  //   console.log('ok load : '+res);
+  // },
+  // function err(err) {
+  //   console.log('PAS ok load : '+err);
+  // });
+
+  // let prom2 = chargerScript2('yoyoyo.js').catch();
+
+  // avec async et await
+async function asyncBonjour() {
+  let prom = chargerScript2('nomDuScripeuh');
+
+  let resultat = await prom;
+  console.log('res : '+resultat);
+}
+
+// asyncBonjour();
+
+async function resultat() {
+  try {
+    let srciptB = chargerScript2('test.js');
+    let srciptA = chargerScript2('scrrr');
+    console.log(srciptA);
+    console.log(srciptB);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// resultat();
 
 });
