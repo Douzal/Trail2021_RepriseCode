@@ -1,5 +1,5 @@
 $(function(){
-    console.info('hello cookies !');
+    // console.info('hello cookies !');
 
     function loadCSS(cssName) {
         return new Promise((resolve, reject) => {
@@ -51,5 +51,36 @@ $(function(){
     // secure : pour les https
     document.cookie = 'prenom=Douzal; secure'
 
-    console.info('document.cookie : ', document.cookie);
+    // console.info('document.cookie : ', document.cookie); // marche pas sans un serveur..
+
+
+
+    /* localStorage */
+    let prenom;
+    prenom=localStorage.getItem('prenom');
+    console.info(prenom);
+    
+    if(!prenom) {
+        do {
+            localStorage.setItem('prenom', prompt('quel est votre prénom ?'));
+        } while(!localStorage.getItem('prenom'))
+        
+        prenom = localStorage.getItem('prenom');
+        setPrenom('prenom');
+        console.info(`ok prenom FIRST set :\n\t${prenom}`);
+    } else {
+        // prenom = localStorage.getItem(prenom),
+        console.info(`ok prenom DEJA set :\n\t${prenom}`);
+        setPrenom(prenom);
+    }
+
+
+    /* functions aux */
+    function setPrenom (pren) {
+        console.log('setPrenom function');
+        $('#price_label').text(pren);
+    }
+
+    localStorage.clear();
+    // console.trace();
 });
