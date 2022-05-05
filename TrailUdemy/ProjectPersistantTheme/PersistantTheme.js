@@ -30,25 +30,34 @@ $(function() {
 
     /* CHECK FOR EXISTING LOCALPREFERENCE */
     let localPreference = localStorage.getItem('theme');
+    let localUsername = localStorage.getItem('user');
     // console.log('localPreference : ', localPreference);
     // existence d'une file
     
     if(localPreference) {
         console.info('File de theme déjà créée en LocalStorage - Affichage en fonction');
-        initTheme(localPreference);
+        initTheme(localPreference, localUsername);
     } else {
         console.info('PAS ENCORE de File de theme en LocalStorage');
     }
     
     //
-    function initTheme(localPreference) {
-        console.log('localPreference 22: ', localPreference);
+    function initTheme(localPreference, localUsername) {
+        // console.log('localPreference : ', localPreference);
         if(localPreference==localStorageDark) {
             switchToDark();
         } else if (localPreference==localStorageClair) {
             switchToClair();
         } else {
             console.log('moche');
+        }
+
+        if(!localUsername == '') {
+            $('p[class="mt-3"]').text('Bonjour '+localStorage.getItem('user'));
+            console.log('to1 : ', localUsername);
+        } else {
+            console.log('to2 : ', localUsername);
+
         }
     }
 
@@ -101,7 +110,6 @@ $(function() {
     modeBtn.addEventListener('click', switchButtonLabel);
 
     /* Ajoutd'un bouton pour effacer le LocalStorage */
-
     let deleteBtn = document.createElement('button');
     deleteBtn = $(deleteBtn); // convertir en utilisable par jQuery
     deleteBtn.html('Effacer préférence de thème'); 
@@ -110,7 +118,29 @@ $(function() {
     deleteBtn.click(function (e) { 
         if(confirm('Effacer les préférences ?')) {
             localStorage.setItem('theme','');
+            localStorage.setItem('user','');
+            deleteBtn.click(function (e) { 
+        if(confirm('Effacer les préférences ?')) {
+            localStorage.setItem('theme','');
             console.warn('préférences oubliées.');
+        }        
+    });
+            console.warn('préférences oubliées.');
+        }        
+    });
+
+    /* Ajoutd'un bouton pour nom user */
+    let usernameBtn = document.createElement('button');
+    usernameBtn = $(usernameBtn); // convertir en utilisable par jQuery
+    usernameBtn.html('Username'); 
+    usernameBtn.appendTo($('#thisDiv'));
+
+    usernameBtn.click(function (e) { 
+        let username = prompt('Nom du user ?');
+        if(username) {
+            localStorage.setItem('user',username);
+            $('p[class="mt-3"]').text('Bonjour '+username);
+            console.warn('Name set to ', username);
         }        
     });
 
