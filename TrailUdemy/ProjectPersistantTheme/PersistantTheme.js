@@ -1,4 +1,5 @@
 $(function() {
+    'use strict';
     // console.warn('ok theme');
     const sombre            = 'Thème sombre';
     const clair             = 'Thème clair';
@@ -54,9 +55,7 @@ $(function() {
 
         if(!localUsername == '') {
             $('p[class="mt-3"]').text('Bonjour '+localStorage.getItem('user'));
-            console.log('to1 : ', localUsername);
         } else {
-            console.log('to2 : ', localUsername);
 
         }
     }
@@ -117,14 +116,8 @@ $(function() {
 
     deleteBtn.click(function (e) { 
         if(confirm('Effacer les préférences ?')) {
-            localStorage.setItem('theme','');
-            localStorage.setItem('user','');
-            deleteBtn.click(function (e) { 
-        if(confirm('Effacer les préférences ?')) {
-            localStorage.setItem('theme','');
-            console.warn('préférences oubliées.');
-        }        
-    });
+            localStorage.removeItem('theme');
+            localStorage.removeItem('user');
             console.warn('préférences oubliées.');
         }        
     });
@@ -144,10 +137,36 @@ $(function() {
         }        
     });
 
+    /* Ajout de la géoloc */
+    if('geolocation' in navigator) {
+        const options = {
+            enableHighAccuracy: true,
+            maximumAge: 10000
+        }
+        navigator.geolocation.getCurrentPosition(
+            (pos) => {
+                // create div
+                let newDiv = document.createElement('div');
+                newDiv = $(newDiv); // convertir en utilisable par jQuery
+                newDiv.addClass('row justify-content-center').attr('id', 'newDiv').insertAfter($('#thisDiv'));
+                // console.log('document.querySelector(\'#newDiv\') : ',document.querySelector('#newDiv'));
+                
+                let newSpan = document.createElement('p');
+                let phraseGeoloc = 'User\'s coordinates :\n\tLat : '+pos.coords.latitude+'\n\tLong : '+pos.coords.longitude;
+                newSpan.textContent = phraseGeoloc;
+                // newSpan.classList = 'dark';
+                document.querySelector('#newDiv').appendChild(newSpan);
+                
+            },
+            errorFunc,
+            options
+        );
+    } else {
+        console.console.warn('no geoloc available');
+    }
 
-    // console.group();
-    // console.log(`END PROG -- localStorage.getItem('theme') : ${localStorage.getItem('theme')}`);
-    // console.trace();
-    // console.groupEnd();
+    function errorFunc () {
+        console.error('Vous avez refusé la géoloc');
+    }
 
 })

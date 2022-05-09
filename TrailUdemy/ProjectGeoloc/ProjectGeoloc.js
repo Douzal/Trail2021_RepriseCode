@@ -163,10 +163,10 @@ async function asyncBonjour() {
 
 async function resultat() {
   try {
-    let srciptB = chargerScript2('test.js');
     let srciptA = chargerScript2('scrrr');
     console.log(srciptA);
-    console.log(srciptB);
+    // let srciptB = chargerScript2('test.js');
+    // console.log(srciptB);
   } catch (error) {
     console.log(error);
   }
