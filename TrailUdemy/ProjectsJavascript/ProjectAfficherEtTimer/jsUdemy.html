@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercices Udemy : timer, et affichage d'un bouton</title>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+</head>
+<body>
+    <button id="showHideBtn" class="btn btn-outline-primary btn-lg">click me</button>
+    <form style="margin:-3em 8em; max-width:9.5em"><!-- class="form-row"  -->
+        <!-- why isn't max and min working there ? User can set any value..-->
+        <input type="number" id="timer" name="timer" required
+                min="1" max="10" value="5"
+                class="form-control">
+    </form>
+    <!-- <script type="text/javascript" src="scriptSpoiler.js"></script> -->
+    <script type="text/javascript" src="scriptTimer.js"></script>
+</body>
+
+</html>

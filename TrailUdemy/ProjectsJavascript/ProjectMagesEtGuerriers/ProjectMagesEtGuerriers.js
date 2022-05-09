@@ -2,8 +2,7 @@ jQuery(document).ready(function($) {
     // projet Classes et Guerriers
     // console.log('hello mages');
 
-
-    // classe Personnage
+    /* classe Personnage */
     class Personnage {
         constructor(pseudo, classe, sante, attaque) {
             this.pseudo = pseudo;
@@ -32,7 +31,7 @@ jQuery(document).ready(function($) {
         }
     }
 
-    // classe Magicien
+    /* classe Magicien */
     class Magicien extends Personnage {
         constructor(pseudo, classe, sante, attaque) {
             super(pseudo, "magicien", 170, 90);
@@ -58,7 +57,7 @@ jQuery(document).ready(function($) {
         }
     }
 
-    // classe Guerrier
+    /* classe Guerrier */
     class Guerrier extends Personnage {
         constructor(pseudo, classe, sante, attaque) {
             super (pseudo, "guerrier", 350, 50);
@@ -84,15 +83,15 @@ jQuery(document).ready(function($) {
         }
     }
 
-
-
     // creation d'un personnage lambda
     let agresseurLambda = new Personnage('aggresseur', 'guerrier', 150, 500);
-    // console.log(agresseurLambda);
-    // agresseurLambda.evoluer();
+    console.table(agresseurLambda);
+    agresseurLambda.evoluer();
+
+    console.group();
     let gandalf = new Magicien('Gandalf le Gris');
     let superCouillu = new Guerrier('SuperCouillu');
-    // gandalf.verifierSante();
+    gandalf.verifierSante();
 
     gandalf.informations;
     superCouillu.informations;
@@ -102,6 +101,7 @@ jQuery(document).ready(function($) {
     superCouillu.attaquer(gandalf);
     gandalf.informations;
     gandalf.coupSpecial(superCouillu);
+    console.groupEnd();
     
 
 

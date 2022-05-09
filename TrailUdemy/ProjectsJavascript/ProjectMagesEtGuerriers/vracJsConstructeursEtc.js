@@ -145,14 +145,13 @@ $(function() { // jQuery plus rapide
     $('span').attr('id', 'monSpan');
 
     body.appendChild(span);
-
-    span.innerHTML = fact(5);
+    span.innerHTML = '5! = ' + fact(5);
 
     span.addEventListener('mouseover', function () {
-        span.innerHTML = fact2(4);
+        span.innerHTML = '4! = '+fact2(4);
     });
     span.addEventListener('mouseout', function () {
-        span.innerHTML = fact(5);
+        span.innerHTML = '7! = '+fact(7);
     });
 
     // fonction exponentielle
@@ -215,20 +214,26 @@ $(function() { // jQuery plus rapide
                 if(request.status === 200) {
                     let response = request.response;
                     let actualPrice = response.EUR.last;
-                    div.textContent=actualPrice;
-                    console.log(actualPrice);
-                    console.log(`Reponse : ${JSON.stringify(response)[0]}`); // debile, ça ramène rien d'interessant
+                    let date2 = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
+                    // let localDate = new Date().toLocaleString('fr-FR', {
+                    //     // 'dateStyle':'long',
+                    //     // 'timeStyle':'long',
+                    //     'hour':"numeric",
+                    //     'minutes':"numeric",
+                    //     'second':"numeric",
+                    // });
+                    div.textContent='BTC\'s actual price = '+actualPrice+' € at '+date2;
+                    // console.log(actualPrice);
+                    // console.log(`Reponse : ${JSON.stringify(response)[0]}`); // debile, ça ramène rien d'interessant
                 } else {
                     console.log(`Reponse : ${JSON.stringify(response)[0]}`); // debile, ça ramène rien d'interessant
                     console.log(`Erreur lors de la requête du prix - ${response.status}`); // useless
                 }
             }
-
         };
-
     }
 
-    // setInterval(ajaxBtcRequest, 1000);
+    setInterval(ajaxBtcRequest, 1000);
 
 
     // requête POST
