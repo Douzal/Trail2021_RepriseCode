@@ -6,6 +6,7 @@ $(function() {
     let canvas, context;
     const delay = 100;
     const canWidth = 900, canHeight = 600;
+    // const canWidth = 300, canHeight = 200;
     let blockSize = 15; 
     let snake, apple;
     let amberHead, restBody; // rest of body
@@ -21,6 +22,7 @@ $(function() {
     let wallCollision = false
     let snakeCollision = false;
     let widthInBlocks = canWidth / blockSize, heightInBlocks = canHeight / blockSize;
+    let rejourer = false;
 
     launchGame();
 
@@ -45,6 +47,7 @@ $(function() {
         if(snake.checkCollision()) {
             // GAME OVER
             console.error('GAME OVER');
+            gameOver();
         } else {
             // snake has eaten an apple
             if(snake.eateApple(apple)) {
@@ -228,8 +231,8 @@ $(function() {
             // ask for random numbers
             randomX = getRandomBetween(0, widthInBlocks), randomY = getRandomBetween(0, heightInBlocks);
             this.pos = [randomX, randomY];
-            // console.log(`\twidthInBlocks : ${widthInBlocks} \n\theightInBlocks : ${heightInBlocks}`);
-            // console.log(`\trandomX : ${randomX} \n\trandomY : ${randomY}`);
+            console.log(`\twidthInBlocks : ${widthInBlocks} \n\theightInBlocks : ${heightInBlocks}`);
+            console.log(`\trandomX : ${randomX} \n\trandomY : ${randomY}`);
         };
 
         this.isOnSnake = function (snakeToCheck) {
@@ -323,6 +326,19 @@ $(function() {
 
     function getRandomBetween(min, max) {
         return Math.floor((max-min + 1) * Math.random() + min);
+    }
+
+    function gameOver() {
+        context.save();
+        context.fillText('GAME OVER', 5, 15); //canWidth/2, canHeight/2);
+        // context.fillText('Click ENTER to play again', 5, 30);
+
+        // context.fillText('Click ENTER to play again', 5, 30);
+
+        // LocalStorage pour garder le score
+        rejouer = confirm('Voulez-vous rejouer ?');
+
+        context.restore();
     }
 
 })
