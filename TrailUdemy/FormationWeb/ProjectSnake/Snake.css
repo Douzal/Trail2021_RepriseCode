@@ -1,5 +1,54 @@
 /* GENERAL CSS */
+body {
+    background-color: rgb(164, 174, 210);
+}
+
 * {
     margin: 0;
     padding: 0;
+}
+
+#gameTitle {
+    margin: 1em 1em 1em 5em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    color: aquamarine;
+    text-decoration: underline overline;
+}
+
+.data {
+    margin-left: 5em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: aquamarine;
+}
+
+.data:hover {
+    font-style: italic;
+    font-size: larger;
+    color: blue;
+}
+
+#butt {
+    _float: right;
+    _position: absolute;
+    _left: 20em;
+    _top: 10em;
+    _padding: 0 0 2em 5em;
+    margin: 1em 0 2em 5em;
+}
+
+#butt:hover {
+    color: blue;
+    font-weight: bold;
+}
+
+canvas {
+    background-color: cornflowerblue;
+    margin-left:4em;
+    /* margin: 50px auto; */
+    font-family: Verdana, 'Courier New', Courier, monospace, Tahoma, sans-serif;
+    font: bold 20px verdana;
+    border: 3px solid aqua;
+    border-radius: 0.8em;
+    display: block;
 }

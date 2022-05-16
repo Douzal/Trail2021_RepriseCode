@@ -5,13 +5,13 @@ $(function() {
     // let canvas;
     let canvas, context;
     const delay = 100;
-    const canWidth = 900, canHeight = 600;
+    const canWidth = 990, canHeight = 420;
     // const canWidth = 300, canHeight = 200;
     let blockSize = 15; 
     let snake, apple;
     let amberHead, restBody; // rest of body
     let headX, headY;
-    const snakeColor = 'rgb(0,80,190)', appleColor = 'rgb(50,170,10)'; //"#33cc33";
+    const snakeColor = 'rgb(0,80,190)', appleColor = 'purple';//'rgb(50,170,10)'; //"#33cc33";
     const appleRadius = blockSize/2;
     let appX, appY;
     let randomX, randomY; // utile ? pour apple
@@ -22,23 +22,32 @@ $(function() {
     let wallCollision = false
     let snakeCollision = false;
     let widthInBlocks = canWidth / blockSize, heightInBlocks = canHeight / blockSize;
-    let rejourer = false;
+    let rejouer = false;
+    // let gameDatas; // contains all localDatas
+    let localMaxScore, localLastScore, localGamesPlayed;
+    let blocksEaten;
+    let timeoutId;
 
     launchGame();
 
     function launchGame() {
+        blocksEaten = 0;
         canvas = document.createElement('canvas');
         canvas.width = canWidth;
         canvas.height = canHeight;
-        canvas.style.border = "1px solid purple";
+        // canvas.style.border = "2px solid purple";
         $('body').append($(canvas));
         context = canvas.getContext('2d');
         snake = new Snake([
             [7,4], [6,4], [5,4], [4,4], [3, 4], [2, 4]
         ], dirR);
+        // fill the datas
+        getDatas(snake);
         // console.log(Object.keys(snake));
         apple = new Apple([10,10]);
+        // init();
         apple.draw();
+        // drawScore();
         refreshCanvas();
     }
     
@@ -47,11 +56,12 @@ $(function() {
         if(snake.checkCollision()) {
             // GAME OVER
             console.error('GAME OVER');
-            gameOver();
+            gameOver(snake);
         } else {
             // snake has eaten an apple
             if(snake.eateApple(apple)) {
-                console.log('mangé le mac');
+                console.warn('mangé le mac (la pomme, c\'est la blague drôle !');
+                blocksEaten++;
                 snake.ateApple = true;
                 // avoid apple already on snake
                 do {
@@ -63,8 +73,8 @@ $(function() {
             context.clearRect(0, 0, canWidth, canHeight);
             snake.draw();
             apple.draw();
-            
-            setTimeout(refreshCanvas, delay);
+            drawScore(snake);
+            timeoutId = setTimeout(refreshCanvas, delay);
         }
     }
     
@@ -72,6 +82,17 @@ $(function() {
         let x = pos[0] * blockSize;
         let y = pos[1] * blockSize;
         ctx.fillRect(x, y, blockSize, blockSize);
+    }
+
+    function drawScore(snake) {
+        context.save();
+        context.textAlign = 'left';
+        context.font = 'normal 20px verdana';
+        context.strokeStyle = "blue";
+        context.fillText('Score : ' + parseInt(snake.body.length), 20, canHeight - 7);
+        context.textAlign = 'right';
+        context.fillText('Blocks eaten : ' + blocksEaten, canWidth-20, canHeight - 7);
+        context.restore();
     }
 
     /* constructeur SNAKE */
@@ -117,7 +138,7 @@ $(function() {
             }
             this.body.unshift(nextPos); // unshift ajoute au début du tableau
             // pop only if snake didn't juste ate Mac
-            console.log('this.ateApple : ', this.ateApple);
+            // console.log('this.ateApple : ', this.ateApple);
             if(!this.ateApple) {
                 this.body.pop(); //.pop(body[this.body.length-1]); // in fact .pop() is sufficient enough
             } else {
@@ -229,7 +250,7 @@ $(function() {
         
         this.setNewPosition = function () {
             // ask for random numbers
-            randomX = getRandomBetween(0, widthInBlocks), randomY = getRandomBetween(0, heightInBlocks);
+            randomX = getRandomBetween(0, widthInBlocks-1), randomY = getRandomBetween(0, heightInBlocks-1);
             this.pos = [randomX, randomY];
             console.log(`\twidthInBlocks : ${widthInBlocks} \n\theightInBlocks : ${heightInBlocks}`);
             console.log(`\trandomX : ${randomX} \n\trandomY : ${randomY}`);
@@ -240,6 +261,7 @@ $(function() {
             for(const part of snakeToCheck.body) {
                 if(deepEqual(part, this.pos)) {
                     isOnSnake = true;
+                    return isOnSnake; // or not ?
                 }
             }
             return isOnSnake;
@@ -275,29 +297,141 @@ $(function() {
             case 'ArrowDown':
                 newDir = dirD;
                 break;
+            case 'Enter':
+                if(confirm('Voulez-vous relancer une partie ?')) {
+                    clearTimeout(timeoutId)
+                    init();
+                }
+                break;
             default:
                 // throw('Unrecognized keycode !');
                 return;
             }
-            // console.log(newDir);
-            snake.setDirection(newDir);        
+        // console.log(newDir);
+        snake.setDirection(newDir);        
+    });
+
+    /* handle click Remettre compteurs à 0 ?*/
+    $('#butt').click(function() {
+        if(confirm('Remettre les compteurs à 0 ?')) {
+            localStorage.removeItem('localMaxScore');
+            localStorage.removeItem('localLastScore');
+            localStorage.removeItem('localGamesPlayed');
+
+            getDatas(snake);
+        }
     });
 
     /* AUXILIAIRES FUNCTIONS */
+    function init() {
+        blocksEaten = 0;
+        snake = new Snake([
+            [7,4], [6,4], [5,4], [4,4], [3, 4], [2, 4]
+        ], dirR);
+        getDatas(snake);
+        apple = new Apple([10,10]);
+        // apple.draw();
+        refreshCanvas();
+    }
+    
+    function gameOver(snake) {
+        // LocalStorage pour garder le score
+        storeGameDatas(snake);
+
+        context.save();
+        // CSS
+        context.font = 'bold 40px verdana';
+        context.textBaseline = 'middle'; //style.fontFamily = 'Verdana', 'Courier New';
+        context.strokeStyle = "blue";
+        context.textAlign = 'center';
+        context.strokeText('GAME OVER', canWidth/2, canHeight/2);
+        context.font = 'bold 20px Verdana'
+        context.strokeText('Click ENTER to play again', canWidth/2, canHeight/2+40);
+
+        // context.fillText('GAME OVER', 5, 15); //canWidth/2, canHeight/2);
+        // context.fillText('Click ENTER to play again', 5, 30);
+
+        // context.fillText('Click ENTER to play again', 5, 30);
+
+        rejouer = confirm('Voulez-vous rejouer ?'); // true = OK, false overwhise
+        getDatas(snake);
+        if(rejouer) {
+            // launch again
+            init();
+        } else {
+            
+        }
+        context.restore();
+    }
+
+    /* allows to persist datas (localStorage) */
+    function storeGameDatas(snake) {
+        // localMaxScore
+        // console.log(`localMaxScore : ${localStorage.getItem('localMaxScore')}`);
+        localMaxScore = localStorage.getItem('localMaxScore');
+        if(localStorage.getItem('localMaxScore')) {
+            // compare with new score
+            if(snake.body.length > localMaxScore) {
+                localStorage.setItem('localMaxScore', snake.body.length);
+            }
+        } else {
+            localStorage.setItem('localMaxScore', snake.body.length);
+        };
+        
+        // localLastScore
+        localStorage.setItem('localLastScore', snake.body.length);
+
+        // localGamesPlayed
+        localGamesPlayed = parseInt(localStorage.getItem('localGamesPlayed'));
+        if(localGamesPlayed == '0' || isNaN(localGamesPlayed) || (localGamesPlayed === null)) { // hack because if(0) returns false ..
+            // create and initiate
+            localStorage.setItem('localGamesPlayed', 1);
+        } else {
+            // +1
+            localStorage.setItem('localGamesPlayed', localGamesPlayed+1);
+        }
+    }
+
+    /* called one time when loading the page (call to launchGame()) */
+    function getDatas(snake) {
+        // get les éléments
+        let maxScore = $('#maxScore');
+        let lastScore = $('#lastScore');
+        let gamesPlayed = $('#gamesPlayed');
+
+        // set elements
+        localMaxScore = localStorage.getItem('localMaxScore');
+        maxScore.text(localMaxScore || snake.body.length)
+
+        localLastScore = localStorage.getItem('localLastScore');
+        lastScore.text(localLastScore || snake.body.length);
+
+        localGamesPlayed = localStorage.getItem('localGamesPlayed');
+        // localGamesPlayed = 0;
+
+        // console.log('getDatas() - localGamesPlayed :', localGamesPlayed);
+        if(isNaN(localGamesPlayed || (localGamesPlayed === null))) {
+            localGamesPlayed = 0;
+        }
+        // console.log('getDatas() - localGamesPlayed AFTER SET:', localGamesPlayed);
+
+        gamesPlayed.text(localGamesPlayed || 0);
+    }
+
     /* https://dmitripavlutin.com/how-to-compare-objects-in-javascript/ */
     function shallowEqual(object1, object2) {
         const keys1 = Object.keys(object1);
         const keys2 = Object.keys(object2);
         if (keys1.length !== keys2.length) {
-          return false;
+            return false;
         }
         for (let key of keys1) {
-          if (object1[key] !== object2[key]) {
+            if (object1[key] !== object2[key]) {
             return false;
-          }
+            }
         }
         return true;
-      }
+        }
 
     /* https://dmitripavlutin.com/how-to-compare-objects-in-javascript/ */
     function deepEqual(object1, object2) {
@@ -326,19 +460,6 @@ $(function() {
 
     function getRandomBetween(min, max) {
         return Math.floor((max-min + 1) * Math.random() + min);
-    }
-
-    function gameOver() {
-        context.save();
-        context.fillText('GAME OVER', 5, 15); //canWidth/2, canHeight/2);
-        // context.fillText('Click ENTER to play again', 5, 30);
-
-        // context.fillText('Click ENTER to play again', 5, 30);
-
-        // LocalStorage pour garder le score
-        rejouer = confirm('Voulez-vous rejouer ?');
-
-        context.restore();
     }
 
 })
