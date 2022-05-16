@@ -1,3 +1,124 @@
 * {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+body {
+    background: #bfbfbf url('images/background.jpg') repeat-x;
+}
+
+header {
+    padding: 30px 0;
+}
+
+header h1 {
+    font-size: 40px;
+    text-align: center;
+    font-family: 'Limelight', 'cursive', Tahoma, sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 2px #000;
+}
+
+/* MAIN MENU */
+#main-menu ul {
+    width: 980px;
+    height: 500px;
+    margin: 0 auto;
+    padding-top: 148px;
+}
+
+#main-menu ul li {
+    float: left;
+    width: 140px;
+    height: 500px;
+    overflow: hidden;
+    position: relative;
+    _display: inline-block;
+}
+
+.bw {
+    position: absolute;
+    left: 0px;
+
+    width: 140px;
+    height: 500px;
+    cursor: pointer;
+    background: url('images/bw-image.jpg') no-repeat;
+    opacity: 0.7;
+}
+
+.bw:hover {
+    _display: none;
+}
+
+.color {
+    position: absolute;
+    left: 140px;
+    width: 140px;
+    height: 500px;
+    cursor: pointer;
+    background: url('images/color-image.jpg') no-repeat;
+}
+
+#part2 div {
+    background-position: -140px 0;
+}
+
+#part3 div {
+    background-position: -280px 0;
+}
+
+#part4 div {
+    background-position: -420px 0;
+}
+
+#part5 div {
+    background-position: -560px 0;
+}
+
+.description {
+    position: absolute;
+    left: 140px;
+    width: 240px;
+    height: 460px;
+    padding: 20px;
+    background-color: white;
+}
+
+.description h2 {
+    padding-top: 20px;
+    font-size: 30px;
+    font-family: 'Limelight', 'cursive', Tahoma, sans-serif;
+    text-align: center;
+    color: #333;
+    text-transform: uppercase;
+}
+
+.description h3 {
+    margin-top: 30px;
+    padding: 10px;
+    font-size: 26px;
+    font-family: 'Lobster';
+    background-color: #d70000;
+    color: #fff;
+    text-align: center;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 5px;
+}
+
+.description p {
+    padding-top: 35px;
+    font-size: 22px;
+    color: #000;
+    text-align: center;
+}
+
+li p {
+    text-transform: capitalize;
 }
