@@ -45,6 +45,7 @@ body {
 canvas {
     background-color: cornflowerblue;
     margin-left:4em;
+    margin-bottom: 1.5em;
     /* margin: 50px auto; */
     font-family: Verdana, 'Courier New', Courier, monospace, Tahoma, sans-serif;
     font: bold 20px verdana;

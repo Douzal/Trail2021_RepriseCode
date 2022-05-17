@@ -5,7 +5,7 @@ $(function() {
     // let canvas;
     let canvas, context;
     const delay = 100;
-    const canWidth = 990, canHeight = 420;
+    const canWidth = 990, canHeight = 480;
     // const canWidth = 300, canHeight = 200;
     let blockSize = 15; 
     let snake, apple;
@@ -22,11 +22,12 @@ $(function() {
     let wallCollision = false
     let snakeCollision = false;
     let widthInBlocks = canWidth / blockSize, heightInBlocks = canHeight / blockSize;
-    let rejouer = false;
+    // let rejouer = false;
     // let gameDatas; // contains all localDatas
     let localMaxScore, localLastScore, localGamesPlayed;
     let blocksEaten;
     let timeoutId;
+    let maxScore, lastScore, gamesPlayed;
 
     launchGame();
 
@@ -61,6 +62,7 @@ $(function() {
             // snake has eaten an apple
             if(snake.eateApple(apple)) {
                 console.warn('mangé le mac (la pomme, c\'est la blague drôle !');
+                checkMaxScore(snake);
                 blocksEaten++;
                 snake.ateApple = true;
                 // avoid apple already on snake
@@ -95,6 +97,7 @@ $(function() {
         context.restore();
     }
 
+    /* CONSTRUCTORS */
     /* constructeur SNAKE */
     function Snake(body, direction) {
         this.body       = body;
@@ -231,7 +234,7 @@ $(function() {
         };
     }
 
-    /* Appel constructor */
+    /* constructeur APPLE*/
     function Apple (pos) {
         // console.log('Construit ma pomme ma glotte');
         // appX = this.pos[0] * blockSize + appleRadius;
@@ -270,6 +273,7 @@ $(function() {
 
     }
 
+    /* EVENTS HANDLING */
     /* handle keydown */
     document.addEventListener('keydown', (e) => {
         // e.preventDefault(); //ou pas ?
@@ -317,10 +321,18 @@ $(function() {
             localStorage.removeItem('localMaxScore');
             localStorage.removeItem('localLastScore');
             localStorage.removeItem('localGamesPlayed');
+            // getDatas(snake);
 
-            getDatas(snake);
-        }
+            // set elements : not very good, use of constante would be better
+            let maxScore    = $('#maxScore').text(6);
+            let lastScore   = $('#lastScore').text(6);
+            let gamesPlayed = $('#gamesPlayed').text(0);
+
+            }
     });
+    
+    /* prevent from scrolling */
+    window.addEventListener("keydown", arrow_keys_handler, false);
 
     /* AUXILIAIRES FUNCTIONS */
     function init() {
@@ -352,10 +364,8 @@ $(function() {
         // context.fillText('Click ENTER to play again', 5, 30);
 
         // context.fillText('Click ENTER to play again', 5, 30);
-
-        rejouer = confirm('Voulez-vous rejouer ?'); // true = OK, false overwhise
         getDatas(snake);
-        if(rejouer) {
+        if(confirm('Voulez-vous rejouer ?')) {
             // launch again
             init();
         } else {
@@ -399,16 +409,18 @@ $(function() {
         let lastScore = $('#lastScore');
         let gamesPlayed = $('#gamesPlayed');
 
+        console.table(snake);
+        
         // set elements
         localMaxScore = localStorage.getItem('localMaxScore');
         maxScore.text(localMaxScore || snake.body.length)
-
+        
         localLastScore = localStorage.getItem('localLastScore');
         lastScore.text(localLastScore || snake.body.length);
-
+        
         localGamesPlayed = localStorage.getItem('localGamesPlayed');
         // localGamesPlayed = 0;
-
+        
         // console.log('getDatas() - localGamesPlayed :', localGamesPlayed);
         if(isNaN(localGamesPlayed || (localGamesPlayed === null))) {
             localGamesPlayed = 0;
@@ -416,6 +428,14 @@ $(function() {
         // console.log('getDatas() - localGamesPlayed AFTER SET:', localGamesPlayed);
 
         gamesPlayed.text(localGamesPlayed || 0);
+    }
+
+    /* allows to actualize score if this game's score is the max score */
+    function checkMaxScore(snake) {
+        localMaxScore = localStorage.getItem('localMaxScore');
+        if(localMaxScore < snake.body.length) {
+            maxScore = $('#maxScore').text(snake.body.length);
+        }
     }
 
     /* https://dmitripavlutin.com/how-to-compare-objects-in-javascript/ */
@@ -458,8 +478,18 @@ $(function() {
         return object != null && typeof object === 'object';
     }
 
+    /* get a random number between min and max */
     function getRandomBetween(min, max) {
         return Math.floor((max-min + 1) * Math.random() + min);
     }
 
+    /* allows to prevent scrolling when using arrows 
+    thanks : https://stackoverflow.com/questions/8916620/disable-arrow-key-scrolling-in-users-browser */    
+    let arrow_keys_handler = function(e) {
+        switch(e.code){
+            case "ArrowUp": case "ArrowDown": case "ArrowLeft": case "ArrowRight": 
+                case "Space": e.preventDefault(); break;
+            default: break; // do not block other keys
+        }
+    };
 })
