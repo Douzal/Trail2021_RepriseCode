@@ -485,7 +485,7 @@ $(function() {
 
     /* allows to prevent scrolling when using arrows 
     thanks : https://stackoverflow.com/questions/8916620/disable-arrow-key-scrolling-in-users-browser */    
-    let arrow_keys_handler = function(e) {
+    function arrow_keys_handler (e) {
         switch(e.code){
             case "ArrowUp": case "ArrowDown": case "ArrowLeft": case "ArrowRight": 
                 case "Space": e.preventDefault(); break;

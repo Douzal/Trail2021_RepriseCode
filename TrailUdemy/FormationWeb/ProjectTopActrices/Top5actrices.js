@@ -11,8 +11,9 @@ $(function () {
     let init = function () {
         mainMenuItems.children('.images').click(function(e) {
             // console.log(e.type);
-            console.log($(this));
-            // newIndex = [mainMenuItems].indexOf($(this));
+            // console.log($(this).parent());
+            // console.table([mainMenuItems]);
+            // newIndex = [mainMenuItems].indexOf($(this).parent());
             newIndex = $(this).parent().index();
             console.log(newIndex);
         });
