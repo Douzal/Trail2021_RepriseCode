@@ -8,7 +8,7 @@ $(function() {
     const canWidth = 990, canHeight = 480;
     // const canWidth = 300, canHeight = 200;
     let blockSize = 15; 
-    let snake, apple;
+    let snake, apple, initSnakeSize = 6;
     let amberHead, restBody; // rest of body
     let headX, headY;
     const snakeColor = 'rgb(0,80,190)', appleColor = 'purple';//'rgb(50,170,10)'; //"#33cc33";
@@ -62,19 +62,19 @@ $(function() {
             // snake has eaten an apple
             if(snake.eateApple(apple)) {
                 console.warn('mangé le mac (la pomme, c\'est la blague drôle !');
-                checkMaxScore(snake);
                 blocksEaten++;
                 snake.ateApple = true;
-                // avoid apple already on snake
+                // avoid apple that appears on snake
                 do {
                     apple.setNewPosition();
                 } while(apple.isOnSnake(snake))
             }
-
+            
             //treat as usual
             context.clearRect(0, 0, canWidth, canHeight);
             snake.draw();
             apple.draw();
+            // checkMaxScore(snake);
             drawScore(snake);
             timeoutId = setTimeout(refreshCanvas, delay);
         }
@@ -87,10 +87,18 @@ $(function() {
     }
 
     function drawScore(snake) {
+        // allow to display on "header" real Score max if actual game's score is better than old best score
+        localMaxScore = localStorage.getItem('localMaxScore');
+        if(localMaxScore < snake.body.length) {
+            maxScore = $('#maxScore').text(snake.body.length);
+        }
+
+        // display score informations on canvas's bottom
         context.save();
         context.textAlign = 'left';
         context.font = 'normal 20px verdana';
         context.strokeStyle = "blue";
+        // console.log('parseInt(snake.body.length) : ', parseInt(snake.body.length));
         context.fillText('Score : ' + parseInt(snake.body.length), 20, canHeight - 7);
         context.textAlign = 'right';
         context.fillText('Blocks eaten : ' + blocksEaten, canWidth-20, canHeight - 7);
@@ -115,7 +123,7 @@ $(function() {
             context.restore();
         };
 
-        // rajouter les directions
+        // add "movement"
         this.advance = function () {
             let nextPos = this.body[0].slice(); // permet de copier .slice()
             // add the direction : switch case
@@ -149,6 +157,7 @@ $(function() {
             }
         };
 
+        // direction manager
         this.setDirection = function (newDir) {
             // console.log('dir : ', newDir);
             let allowedDirs;
@@ -255,8 +264,8 @@ $(function() {
             // ask for random numbers
             randomX = getRandomBetween(0, widthInBlocks-1), randomY = getRandomBetween(0, heightInBlocks-1);
             this.pos = [randomX, randomY];
-            console.log(`\twidthInBlocks : ${widthInBlocks} \n\theightInBlocks : ${heightInBlocks}`);
-            console.log(`\trandomX : ${randomX} \n\trandomY : ${randomY}`);
+            // console.log(`\twidthInBlocks : ${widthInBlocks} \n\theightInBlocks : ${heightInBlocks}`);
+            // console.log(`\trandomX : ${randomX} \n\trandomY : ${randomY}`);
         };
 
         this.isOnSnake = function (snakeToCheck) {
@@ -318,17 +327,11 @@ $(function() {
     /* handle click Remettre compteurs à 0 ?*/
     $('#butt').click(function() {
         if(confirm('Remettre les compteurs à 0 ?')) {
-            localStorage.removeItem('localMaxScore');
-            localStorage.removeItem('localLastScore');
-            localStorage.removeItem('localGamesPlayed');
-            // getDatas(snake);
-
-            // set elements : not very good, use of constante would be better
-            let maxScore    = $('#maxScore').text(6);
-            let lastScore   = $('#lastScore').text(6);
-            let gamesPlayed = $('#gamesPlayed').text(0);
-
-            }
+            localStorage.setItem('localMaxScore', initSnakeSize);
+            localStorage.setItem('localLastScore', initSnakeSize);
+            localStorage.setItem('localGamesPlayed', 0);
+            getDatas(snake);
+        }
     });
     
     /* prevent from scrolling */
@@ -368,10 +371,9 @@ $(function() {
         if(confirm('Voulez-vous rejouer ?')) {
             // launch again
             init();
-        } else {
-            
         }
         context.restore();
+        console.clear();
     }
 
     /* allows to persist datas (localStorage) */
@@ -409,8 +411,6 @@ $(function() {
         let lastScore = $('#lastScore');
         let gamesPlayed = $('#gamesPlayed');
 
-        console.table(snake);
-        
         // set elements
         localMaxScore = localStorage.getItem('localMaxScore');
         maxScore.text(localMaxScore || snake.body.length)
@@ -428,14 +428,6 @@ $(function() {
         // console.log('getDatas() - localGamesPlayed AFTER SET:', localGamesPlayed);
 
         gamesPlayed.text(localGamesPlayed || 0);
-    }
-
-    /* allows to actualize score if this game's score is the max score */
-    function checkMaxScore(snake) {
-        localMaxScore = localStorage.getItem('localMaxScore');
-        if(localMaxScore < snake.body.length) {
-            maxScore = $('#maxScore').text(snake.body.length);
-        }
     }
 
     /* https://dmitripavlutin.com/how-to-compare-objects-in-javascript/ */
@@ -487,9 +479,15 @@ $(function() {
     thanks : https://stackoverflow.com/questions/8916620/disable-arrow-key-scrolling-in-users-browser */    
     function arrow_keys_handler (e) {
         switch(e.code){
-            case "ArrowUp": case "ArrowDown": case "ArrowLeft": case "ArrowRight": 
-                case "Space": e.preventDefault(); break;
-            default: break; // do not block other keys
+            case "ArrowUp":
+            case "ArrowDown":
+            case "ArrowLeft":
+            case "ArrowRight": 
+            case "Space":
+                e.preventDefault();
+                break;
+            default:
+                break; // do not block other keys
         }
     };
 })
