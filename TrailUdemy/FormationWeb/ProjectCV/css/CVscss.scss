@@ -109,6 +109,7 @@ body {
         }
 
         .timeline {
+            color: $base-color;
             list-style: none;
             padding: 30px 10px;
             position: relative;
@@ -150,6 +151,54 @@ body {
                 background-color: white;
                 border-radius: 50%;
             }
+
+            .timelinePannel__Container {
+                max-width: 50%;
+                float: left;
+            }
+            .timelinePannel__Container-inverted {
+                max-width: 50%;
+                float: right;
+                .timelinePannel {
+                    float: left;
+                    margin-left: 40px;
+                    // &:after {
+                    //     position: absolute;
+                    //     top: 27px;
+                    //     right: -14px;
+                    //     display: inline-block;
+                    //     border-top: 14px solid transparent;
+                    //     border-left: 14px solid white;
+                    //     border-right: 0 solid white;
+                    //     border-bottom: 14px solid transparent;
+                    //     content: ' ';
+                    // }
+                }
+                
+            }
+            .timelinePannel {
+                width: 90%;
+                float: right;
+                margin-right: 40px;
+                border: 1px solid white;
+                border-radius: 7px;
+                padding: 20px 25px;
+                position: relative;
+                box-shadow: 0 1px 6px rgba(0,0,0, 0.175);
+                background-color: white;
+                &:after {
+                    position: absolute;
+                    top: 27px;
+                    right: -14px;
+                    display: inline-block;
+                    border-top: 14px solid transparent;
+                    border-left: 14px solid white;
+                    border-right: 0 solid white;
+                    border-bottom: 14px solid transparent;
+                    content: ' ';
+                }
+            }
+            
         }
 
     }

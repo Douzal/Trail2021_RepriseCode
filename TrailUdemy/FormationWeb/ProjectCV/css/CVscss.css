@@ -106,6 +106,7 @@ body #experience .experience__title {
 }
 
 body #experience .timeline {
+  color: #3a7f89;
   list-style: none;
   padding: 30px 10px;
   position: relative;
@@ -148,6 +149,46 @@ body #experience .timeline li .timeline__badge {
   margin-left: -25px;
   background-color: white;
   border-radius: 50%;
+}
+
+body #experience .timeline .timelinePannel__Container {
+  max-width: 50%;
+  float: left;
+}
+
+body #experience .timeline .timelinePannel__Container-inverted {
+  max-width: 50%;
+  float: right;
+}
+
+body #experience .timeline .timelinePannel__Container-inverted .timelinePannel {
+  float: left;
+  margin-left: 40px;
+}
+
+body #experience .timeline .timelinePannel {
+  width: 90%;
+  float: right;
+  margin-right: 40px;
+  border: 1px solid white;
+  border-radius: 7px;
+  padding: 20px 25px;
+  position: relative;
+  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+          box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+  background-color: white;
+}
+
+body #experience .timeline .timelinePannel:after {
+  position: absolute;
+  top: 27px;
+  right: -14px;
+  display: inline-block;
+  border-top: 14px solid transparent;
+  border-left: 14px solid white;
+  border-right: 0 solid white;
+  border-bottom: 14px solid transparent;
+  content: ' ';
 }
 
 body .divider {
