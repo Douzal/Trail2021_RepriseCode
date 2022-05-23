@@ -1,18 +1,46 @@
-.container-fluid {
-  background-color: red;
-  color: white;
+body {
+  background-color: #2a8d9a;
+  font-family: 'verdana';
+}
+
+.container, .container-fluid {
+  _background-color: #439b9b;
+  _color: darkcyan;
+}
+
+.container #block1, .container #block2, .container-fluid #block1, .container-fluid #block2 {
+  border: 1px solid purple;
+}
+
+.container form, .container-fluid form {
+  margin: 3em;
+}
+
+.container .form-text, .container-fluid .form-text {
+  color: green;
+  font-size: 0.8em;
+}
+
+.container .pres-proj, .container-fluid .pres-proj {
+  color: #088096;
+  font-family: 'Gill Sans', 'Crete Round';
+}
+
+.container .pres-proj .pres-proj__title, .container-fluid .pres-proj .pres-proj__title {
+  color: green;
+}
+
+.container .pres-proj .pres-proj__descr, .container-fluid .pres-proj .pres-proj__descr {
+  font-family: 'Crete Round', 'Gill Sans';
+}
+
+.pres-proj__title {
+  color: yellow;
 }
 
 /* https://openclassrooms.com/fr/courses/6106181-simplifiez-vous-le-css-avec-sass/6595695-structurez-votre-css */
-.submit {
+.submit.button {
   background-color: #15DEA5;
-}
-
-.button {
-  background-color: #D1464B;
-}
-
-body {
-  background-color: #9a2a2a;
+  color: blue;
 }
 /*# sourceMappingURL=bootstrap.css.map */

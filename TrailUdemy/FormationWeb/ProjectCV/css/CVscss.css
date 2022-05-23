@@ -1,0 +1,117 @@
+/* FUNCTIONS */
+/* https://guwii.com/bytes/sass-function-loop-headings-h1h2h3h4h5h6/ */
+/* VARIABLES */
+body {
+  background-color: #3a7f89;
+  font-family: 'lato', 'verdana';
+  /* PART ABOUT */
+  /* PART SKILLS */
+  /* PART EXPERIENCE */
+  /* GENERAL */
+}
+
+body #about {
+  color: #bbd1cb;
+}
+
+body #about .about__profile-pict {
+  text-align: center;
+  margin: 0 auto 30px;
+}
+
+body #about .about__heading h1 {
+  color: white;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+body #about .about__heading .about__btn {
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid white;
+  border-radius: 3px;
+  display: inline-block;
+  padding: 18px 50px;
+  margin-top: 20px;
+  -webkit-transition: all 0.3s ease-in 0s;
+  transition: all 0.3s ease-in 0s;
+}
+
+body #about .about__heading .about__btn:hover {
+  background-color: white;
+  color: black;
+  _font-weight: bold;
+}
+
+body h1, body h2, body h3, body h4, body h5, body h6 {
+  font-weight: bold;
+}
+
+body img {
+  max-width: 100%;
+  height: auto;
+}
+
+body section {
+  padding: 65px 0 80px 0;
+}
+
+body section .about__heading {
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+body #skills {
+  background-color: white;
+  color: #3a7f89;
+}
+
+body #skills .divider {
+  background-color: #3a7f89;
+}
+
+body #skills .progress {
+  height: 45px;
+  margin: 30px 20px;
+  text-transform: uppercase;
+  _font-family: 'Arial', 'Helvetica', 'sans-serif';
+  _font-size: larger;
+}
+
+body #skills .progress:last-child {
+  margin-bottom: 0;
+}
+
+body #skills .progress-bar {
+  background-color: #3a7f89;
+}
+
+body #skills .progress-bar h5 {
+  text-shadow: 2px 2px 2px black;
+  margin-bottom: 3px;
+}
+
+body #experience .divider {
+  background-color: white;
+}
+
+body #experience .experience__title {
+  color: white;
+}
+
+body .divider {
+  width: 100px;
+  height: 2px;
+  margin: 0 auto 20px;
+}
+
+body .sectionTitle {
+  font-family: 'Verdana', 'Geneva', 'Tahoma', 'sans-serif';
+  font-size: 1.4em;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+}
+/*# sourceMappingURL=CVscss.css.map */

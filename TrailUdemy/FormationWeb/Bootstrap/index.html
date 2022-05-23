@@ -1,42 +1,380 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootstrap demo</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bootstrap demo</title>
 
-    <!-- BOOTSTRAP - CSS part -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="bootstrap.scss" />
-    <link rel="stylesheet" href="bootstrap.css" />
-    <!-- font from google apio -->
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Crete+Round&display=swap" rel="stylesheet"> -->
+        <!-- BOOTSTRAP - CSS part -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <!-- BOOTSTRAP ICONS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+        
+        <!-- dedicated css -->
+        <!-- <link rel="stylesheet" href="bootstrap.scss" /> -->
+        <link rel="stylesheet" href="bootstrap.css" />
+        
+        <!-- font from google apio -->
+        <link href="https://fonts.googleapis.com/css2?family=Crete+Round&display=swap" rel="stylesheet">
 
-</head>
-<body>
-    <div class="container">
-        <div class="">
-            <h1>My Bootstrap app</h1>
-            <p>First Bootsrap paragraph</p>
+    </head>
+    <body data-bs-spy="scroll" data-bs-target="">
+        <div class="container-fluid">
+
+            <!-- NAVBAR -->
+            <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#features">Navbar</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a class="nav-link disabled">Disabled</a></li>
+                        </ul>
+                        <form class="d-flex">
+                            <input class="form-control me-2 bi-sear" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success bi-search" type="submit"></button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- OFFCANVAS -->
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Toggle bottom offcanvas</button>
+            <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasBottomLabel">Baudelaire</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body small">
+                    <p>Homme libre toujours, tu chériras la mer.</p>
+                </div>
+            </div>
+
+
+            <!-- MODAL -->
+            <div class="col-lg-12" style="margin-top: 30px;">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Launch demo modal
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Body de la modale
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" id="myInput">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TOOLTIPS -->
+            <div class="col-lg-12" style="margin-top: 30px;">
+                <!-- <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+                    Tooltip on top
+                </button> -->
+                <button type="button" class="btn btn-secondary"
+                data-bs-html="true" title="<em>Tooltip</em> on right"
+                data-bs-toggle="tooltip" data-bs-placement="right" >
+                    Tooltip on right avec html
+                </button>
+                <!-- <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
+                    Tooltip on bottom
+                </button>
+                <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on left">
+                    Tooltip on left
+                </button> -->
+            </div>
+
+            <!-- PROGRESS BAR -->
+            <div class="progress" style="margin: 10px 0; height: 20px ">
+                <div class="progress-bar progress-bar-striped progress-bar-animated w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">
+                    75% downloading...
+                </div>
+            </div>
+            
+            
+            <!-- dropdown with split button -->
+            <!-- Example split danger button -->
+            <div class="btn-group dropend" style="margin: 10px 0;">
+                <button type="button" class="btn btn-success">Success Action</button>
+                <button type="button" class="btn btn-success dropdown-toggle _dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="visually-hidden">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                </ul>
+            </div>
+            
+            <!-- ICONS -->
+            <div>
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sunglasses" viewBox="0 0 16 16"><path d="M3 5a2 2 0 0 0-2 2v.5H.5a.5.5 0 0 0 0 1H1V9a2 2 0 0 0 2 2h1a3 3 0 0 0 3-3 1 1 0 1 1 2 0 3 3 0 0 0 3 3h1a2 2 0 0 0 2-2v-.5h.5a.5.5 0 0 0 0-1H15V7a2 2 0 0 0-2-2h-2a2 2 0 0 0-1.888 1.338A1.99 1.99 0 0 0 8 6a1.99 1.99 0 0 0-1.112.338A2 2 0 0 0 5 5H3zm0 1h.941c.264 0 .348.356.112.474l-.457.228a2 2 0 0 0-.894.894l-.228.457C2.356 8.289 2 8.205 2 7.94V7a1 1 0 0 1 1-1z"/></svg></span> -->
+                <button type="button" class="btn btn-lg btn-primary"><span class="bi-sunglasses"></span> T'es beau</button>
+                <button type="button" class="btn btn-lg btn-primary"><span class="bi-search"/> Search beauty</button>
+            </div>
+            
+            <!--  IMAGES -->
+            <div>
+                <img class="rounded-circle img-fluid img-thumbnail" src="boo.png" />
+            </div>
+        
+            <!-- FORM -->
+            <form>
+                <div class="_row">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="coucou@...">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="floatingTextarea">Comments</label>
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                        </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+
+                <div class="">
+                    <select class="form-select-md" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                    <output id="out"></output>
+                </div>
+                <!-- checkbox -->
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Default checkbox
+                    </label>
+                    </div>
+            </form>
+            <hr />
+
+            <!-- RADIO -->
+            <div style="margin-left:2em; border-radius:0.5em;border: 1px solid">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">Default radio</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    <label class="form-check-label" for="flexRadioDefault2">Default checked radio</label>
+                </div>
+            </div>
+            <hr />
+            
+            <!-- RANGE -->
+            <div style="margin-left:2em; border-radius:0.5em;border: 1px solid">
+                <label for="customRange3" class="form-label">Example range</label>
+                <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
+            </div>
+            <hr />
+
+            <!-- floating labels -->
+            <div style="margin-left:2em; border-radius:0.5em;border: 1px solid">
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Password</label>
+                    </div>
+            </div>
+                    
+            <h1>Example heading <span class="badge bg-secondary">New</span></h1>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Dropdown button</button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </div>
+<br />
+            <div class="" style="_margin-left:2em; border-radius:0.5em;border: 1px solid">
+                <button type="button" class="btn btn-primary">Primary</button>
+                <button type="button" class="btn btn-lg btn-secondary">Secondary</button>
+                <button type="button" class="btn btn-success">Success</button>
+                <button type="button" class="btn btn-danger">Danger</button>
+                <a type="button" class="btn btn-warning">Warning</a>
+                <button type="button" class="btn btn-outline-info">Info</button>
+                <button type="button" class="btn btn-light">Light</button>
+                <button type="button" class="btn btn-dark" disabled>Dark</button>
+
+                <button type="button" class="btn btn-link">Link</button>
+            </div>
+
+
+            <!-- <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown link
+                </a>
+                
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </div> -->
+            <!-- <div class="row">
+                <p class="h1">Voici un paragraphmvoyez ?</p>
+                <p class="fs-1">Heading 1</p>
+                <h1>Heading 1</h1>
+                <h2>Heading 2</h2>
+                <h3>Heading 3</h3>
+                <p class="h4">Heading 4</p>
+                <h4>Heading 4</h4>
+                <h5>Heading 5</h5>
+                <h6>Heading 6</h6>
+
+                <h3>
+                    Fancy display<small class="text-muted"> with fading text</small>
+                </h3>
+
+                /* FIGURE et BLOCKQUOTE */
+                <figure class="text-center">
+                    <blockquote class="blockquote">
+                        <p>Pépère.</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">Aldous, 2022.</figcaption>
+                </figure>
+            </div> -->
+            <!-- <div class="row">
+                <div id="block1" class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="pres-proj">
+                        <h1 class="pres-proj__title">My Bootstrap app</h1>
+                        <p class="pres-proj__descr">First Bootsrap paragraph</p>
+                    </div>
+                </div>
+                <div id="block2" class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="pres-proj">
+                        <h1 class="pres-proj__title">My Bootstrap app</h1>
+                        <p class="pres-proj__descr">First Bootsrap paragraph</p>
+                    </div>
+                </div>
+
+                <div id="block3" class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="pres-proj">
+                        <h1 class="pres-proj__title">My Bootstrap app</h1>
+                        <p class="pres-proj__descr">First Bootsrap paragraph</p>
+                    </div>
+                </div>
+                <div id="block4" class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="pres-proj">
+                        <h1 class="pres-proj__title">My Bootstrap app</h1>
+                        <p class="pres-proj__descr">First Bootsrap paragraph</p>
+                    </div>
+                </div>
+                <div id="block5" class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="pres-proj">
+                        <h1 class="pres-proj__title">My Bootstrap app</h1>
+                        <p class="pres-proj__descr">First Bootsrap paragraph</p>
+                    </div>
+                </div>
+                <div id="block6" class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="pres-proj">
+                        <h1 class="pres-proj__title">My Bootstrap app</h1>
+                        <p class="pres-proj__descr">First Bootsrap paragraph</p>
+                    </div>
+                </div>
+                <div id="block7" class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="pres-proj">
+                        <h1 class="pres-proj__title">My Bootstrap app</h1>
+                        <p class="pres-proj__descr">First Bootsrap paragraph</p>
+                    </div>
+                </div>
+                <div id="block8" class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="pres-proj">
+                        <h1 class="pres-proj__title">My Bootstrap app</h1>
+                        <p class="pres-proj__descr">First Bootsrap paragraph</p>
+                    </div>
+                </div>
+                <div id="block9" class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="pres-proj">
+                        <h1 class="pres-proj__title">My Bootstrap app</h1>
+                        <p class="pres-proj__descr">First Bootsrap paragraph</p>
+                    </div>
+                </div>
+                <div id="block10" class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="pres-proj">
+                        <h1 class="pres-proj__title">My Bootstrap app</h1>
+                        <p class="pres-proj__descr">First Bootsrap paragraph</p>
+                    </div>
+                </div>
+                <div id="block11" class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="pres-proj">
+                        <h1 class="pres-proj__title">My Bootstrap app</h1>
+                        <p class="pres-proj__descr">First Bootsrap paragraph</p>
+                    </div>
+                </div>
+                <div id="block12" class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="pres-proj">
+                        <h1 class="pres-proj__title">My Bootstrap app</h1>
+                        <p class="pres-proj__descr">First Bootsrap paragraph</p>
+                    </div>
+                </div>
+            </div> -->
+
+
+            <!-- <div class="button submit">
+                Cliquez ici!
+            </div> -->
         </div>
 
 
-        <div class="button submit">
-            Cliquez ici!
-        </div>
-    </div>
+        <!-- jQuery -->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!-- AXIOS-->
+        <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
 
+        <!-- POPPER (for dropdown menus in bootstrap)-->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 
-    <!-- jQuery -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <!-- AXIOS-->
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
-
-    <!-- BOOTSTRAP - Js part - JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-    
-    <!-- <script type="text/javascript" src="Snake.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.9.2/sass.min.js"></script>
-</body>
+        <!-- BOOTSTRAP - Js part - JavaScript Bundle + Popper (no use of Popper CDN then) -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        
+        <!-- SASS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.9.2/sass.min.js"></script>
+        
+        <script type="text/javascript" src="projectBootstrap.js"></script>
+    </body>
 </html>

@@ -1,16 +1,44 @@
-.container-fluid {
-    background-color: red;
-    color: white;
+
+body {
+    background-color: rgb(42, 141, 154);
+    font-family: 'verdana';
+}
+
+.container, .container-fluid {
+    _background-color: rgb(67, 155, 155);
+    _color: darkcyan;
+    #block1, #block2 {
+        border: 1px solid purple;
+    }
+    form {
+        margin: 3em;
+    }
+    .form-text {
+        color: green;
+        font-size: 0.8em;
+    }
+    .pres-proj {
+        color: rgb(8, 128, 150);
+        font-family: 'Gill Sans', 'Crete Round';
+        // &__title {
+            
+        // }
+        .pres-proj__title {
+            color: green;
+        }
+        .pres-proj__descr {
+            font-family: 'Crete Round', 'Gill Sans';
+        }
+    }
+}
+
+// non lu car spécificité moins importante
+.pres-proj__title {
+    color: yellow;
 }
 
 /* https://openclassrooms.com/fr/courses/6106181-simplifiez-vous-le-css-avec-sass/6595695-structurez-votre-css */
-.submit {
+.submit.button {
     background-color: #15DEA5;
-}
-.button {
-    background-color: #D1464B;
-}
-
-body {
-    background-color: rgb(154, 42, 42);
+    color: blue;
 }

@@ -1,0 +1,126 @@
+/* FUNCTIONS */
+/* https://guwii.com/bytes/sass-function-loop-headings-h1h2h3h4h5h6/ */
+// Setup the function in your functions or helpers files, wherever you keep these bits.
+@function headings($from:1, $to:6) {
+    @if $from == $to {
+        @return 'h#{$from}';
+    } @else {
+        @return 'h#{$from},' + headings($from+1, $to);
+    }
+}
+
+/* VARIABLES */
+$base-color: rgb(58, 127, 137); //rgb(42, 141, 154);
+$font-color: #bbd1cb;
+$font-white: white;
+$textShadow2px: 2px 2px 2px black;
+
+body {
+    background-color: $base-color;
+    font-family: 'lato', 'verdana';
+
+    /* PART ABOUT */
+    #about {
+        color: $font-color;
+        .about__profile-pict {
+            text-align: center; // why not adding bootstrap's class 'text-center' ?
+            margin: 0 auto 30px;
+        }
+
+        .about__heading {
+            h1 {
+                color: white;
+                text-transform: uppercase;
+                margin-bottom: 20px;
+            }
+            .about__btn {
+                font-weight: bold;
+                color: white;
+                text-transform: uppercase;
+                text-decoration: none;
+                border: 1px solid white;
+                border-radius: 3px;
+                display: inline-block;
+                padding: 18px 50px;
+                margin-top: 20px;
+                transition: all 0.3s ease-in 0s;
+                // color: red;
+            }
+            .about__btn:hover {
+                background-color: white;
+                color: black;
+                _font-weight: bold;
+            }
+        }
+    }
+    
+    #{headings(1,6)} {
+        font-weight: bold;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    section {
+        padding: 65px 0 80px 0;
+        .about__heading {
+            text-align: center;
+            padding-bottom: 40px;
+        }
+
+    }
+
+    /* PART SKILLS */
+    #skills {
+        background-color: white;
+        color: $base-color;
+        .divider {
+            background-color: $base-color;
+        }
+        .progress {
+            height: 45px;
+            margin: 30px 20px;
+            text-transform: uppercase;
+            _font-family: 'Arial', 'Helvetica', 'sans-serif';
+            _font-size: larger;
+        }
+        .progress:last-child {
+            margin-bottom: 0;
+        }
+        .progress-bar {
+            background-color: $base-color;
+            h5 {
+                text-shadow: $textShadow2px;
+                margin-bottom: 3px;
+            }
+        }
+    }
+
+    /* PART EXPERIENCE */
+    #experience {
+        .divider {
+            background-color: white;
+        }
+        .experience__title {
+            color: white;
+        }
+    }
+
+    /* GENERAL */
+    .divider {
+        width: 100px;
+        height: 2px;
+        margin: 0 auto 20px;
+    }
+
+    .sectionTitle {
+        font-family: 'Verdana', 'Geneva', 'Tahoma', 'sans-serif';
+        font-size: 1.4em;
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: bold;
+    }
+    
+}
