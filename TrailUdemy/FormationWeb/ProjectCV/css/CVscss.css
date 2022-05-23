@@ -93,12 +93,61 @@ body #skills .progress-bar h5 {
   margin-bottom: 3px;
 }
 
+body #experience {
+  color: white;
+}
+
 body #experience .divider {
   background-color: white;
 }
 
 body #experience .experience__title {
   color: white;
+}
+
+body #experience .timeline {
+  list-style: none;
+  padding: 30px 10px;
+  position: relative;
+}
+
+body #experience .timeline:before {
+  content: ' ';
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  width: 5px;
+  background-color: white;
+  left: 50%;
+  margin-left: -2.5px;
+}
+
+body #experience .timeline > li {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+body #experience .timeline > li:after, body #experience .timeline > li:before {
+  content: ' ';
+  display: table;
+}
+
+body #experience .timeline > li:after {
+  clear: both;
+}
+
+body #experience .timeline li .timeline__badge {
+  color: black;
+  width: 50px;
+  line-height: 50px;
+  font-size: 20px;
+  text-align: center;
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  margin-left: -25px;
+  background-color: white;
+  border-radius: 50%;
 }
 
 body .divider {
