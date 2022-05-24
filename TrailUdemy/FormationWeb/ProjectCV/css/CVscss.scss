@@ -1,3 +1,9 @@
+/* VARIABLES */
+$base-color: rgb(58, 127, 137); //rgb(42, 141, 154);
+$font-color: #bbd1cb;
+$font-white: white;
+$textShadow2px: 2px 2px 2px black;
+
 /* FUNCTIONS */
 /* https://guwii.com/bytes/sass-function-loop-headings-h1h2h3h4h5h6/ */
 // Setup the function in your functions or helpers files, wherever you keep these bits.
@@ -9,12 +15,6 @@
     }
 }
 
-/* VARIABLES */
-$base-color: rgb(58, 127, 137); //rgb(42, 141, 154);
-$font-color: #bbd1cb;
-$font-white: white;
-$textShadow2px: 2px 2px 2px black;
-
 body {
     background-color: $base-color;
     font-family: 'lato', 'verdana';
@@ -25,6 +25,9 @@ body {
         .about__profile-pict {
             text-align: center; // why not adding bootstrap's class 'text-center' ?
             margin: 0 auto 30px;
+            &:hover {
+                _box-shadow: 8px 8px 2px 1px rgba(27, 99, 56, 0.2);
+            }
         }
 
         .about__heading {
@@ -53,24 +56,6 @@ body {
             }
         }
     }
-    
-    #{headings(1,6)} {
-        font-weight: bold;
-    }
-
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-
-    section {
-        padding: 65px 0 80px 0;
-        .about__heading {
-            text-align: center;
-            padding-bottom: 40px;
-        }
-
-    }
 
     /* PART SKILLS */
     #skills {
@@ -85,6 +70,9 @@ body {
             text-transform: uppercase;
             _font-family: 'Arial', 'Helvetica', 'sans-serif';
             _font-size: larger;
+            &:hover {
+                box-shadow: 8px 8px 2px 1px rgba(27, 99, 56, 0.2);
+            }
         }
         .progress:last-child {
             margin-bottom: 0;
@@ -95,12 +83,17 @@ body {
                 text-shadow: $textShadow2px;
                 margin-bottom: 3px;
             }
+            &:hover {
+                height: 110%;
+                _box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+            }
         }
     }
 
     /* PART EXPERIENCE */
     #experience {
         color: white;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
         .divider {
             background-color: white;
         }
@@ -162,19 +155,13 @@ body {
                 .timelinePannel {
                     float: left;
                     margin-left: 40px;
-                    // &:after {
-                    //     position: absolute;
-                    //     top: 27px;
-                    //     right: -14px;
-                    //     display: inline-block;
-                    //     border-top: 14px solid transparent;
-                    //     border-left: 14px solid white;
-                    //     border-right: 0 solid white;
-                    //     border-bottom: 14px solid transparent;
-                    //     content: ' ';
-                    // }
+                    &:after {
+                        border-left-width: 0;
+                        border-right-width: 14px;
+                        left: -14px;
+                        right: auto;
+                    }
                 }
-                
             }
             .timelinePannel {
                 width: 90%;
@@ -186,6 +173,21 @@ body {
                 position: relative;
                 box-shadow: 0 1px 6px rgba(0,0,0, 0.175);
                 background-color: white;
+                h3 {
+                    margin-top: 5px;
+                    text-transform: uppercase;
+                    _font-family: 'lato';
+                    font-size: 1.2em;
+                }
+                h4 {
+                    margin-top: 5px;
+                    font-size: 1.2em;
+                    text-transform: capitalize;
+                }
+                h5 {
+                    margin-top: 7px;
+                    font-size: 1em;
+                }
                 &:after {
                     position: absolute;
                     top: 27px;
@@ -204,6 +206,30 @@ body {
     }
 
     /* GENERAL */
+    section {
+        padding: 65px 0 80px 0;
+        .about__heading {
+            text-align: center;
+            padding-bottom: 40px;
+        }
+
+    }
+        
+    #{headings(1,6)} {
+        font-weight: bold;
+    }
+
+    .img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .img100 {
+        position: relative;
+        max-width: 100%;
+        height: auto;
+    }
+
     .divider {
         width: 100px;
         height: 2px;

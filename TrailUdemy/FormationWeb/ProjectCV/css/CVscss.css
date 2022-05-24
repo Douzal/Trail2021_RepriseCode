@@ -1,6 +1,6 @@
+/* VARIABLES */
 /* FUNCTIONS */
 /* https://guwii.com/bytes/sass-function-loop-headings-h1h2h3h4h5h6/ */
-/* VARIABLES */
 body {
   background-color: #3a7f89;
   font-family: 'lato', 'verdana';
@@ -17,6 +17,11 @@ body #about {
 body #about .about__profile-pict {
   text-align: center;
   margin: 0 auto 30px;
+}
+
+body #about .about__profile-pict:hover {
+  _-webkit-box-shadow: 8px 8px 2px 1px rgba(27, 99, 56, 0.2);
+  _        box-shadow: 8px 8px 2px 1px rgba(27, 99, 56, 0.2);
 }
 
 body #about .about__heading h1 {
@@ -45,24 +50,6 @@ body #about .about__heading .about__btn:hover {
   _font-weight: bold;
 }
 
-body h1, body h2, body h3, body h4, body h5, body h6 {
-  font-weight: bold;
-}
-
-body img {
-  max-width: 100%;
-  height: auto;
-}
-
-body section {
-  padding: 65px 0 80px 0;
-}
-
-body section .about__heading {
-  text-align: center;
-  padding-bottom: 40px;
-}
-
 body #skills {
   background-color: white;
   color: #3a7f89;
@@ -80,6 +67,11 @@ body #skills .progress {
   _font-size: larger;
 }
 
+body #skills .progress:hover {
+  -webkit-box-shadow: 8px 8px 2px 1px rgba(27, 99, 56, 0.2);
+          box-shadow: 8px 8px 2px 1px rgba(27, 99, 56, 0.2);
+}
+
 body #skills .progress:last-child {
   margin-bottom: 0;
 }
@@ -93,8 +85,15 @@ body #skills .progress-bar h5 {
   margin-bottom: 3px;
 }
 
+body #skills .progress-bar:hover {
+  height: 110%;
+  _-webkit-box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
+  _        box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
+}
+
 body #experience {
   color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body #experience .divider {
@@ -166,6 +165,13 @@ body #experience .timeline .timelinePannel__Container-inverted .timelinePannel {
   margin-left: 40px;
 }
 
+body #experience .timeline .timelinePannel__Container-inverted .timelinePannel:after {
+  border-left-width: 0;
+  border-right-width: 14px;
+  left: -14px;
+  right: auto;
+}
+
 body #experience .timeline .timelinePannel {
   width: 90%;
   float: right;
@@ -179,6 +185,24 @@ body #experience .timeline .timelinePannel {
   background-color: white;
 }
 
+body #experience .timeline .timelinePannel h3 {
+  margin-top: 5px;
+  text-transform: uppercase;
+  _font-family: 'lato';
+  font-size: 1.2em;
+}
+
+body #experience .timeline .timelinePannel h4 {
+  margin-top: 5px;
+  font-size: 1.2em;
+  text-transform: capitalize;
+}
+
+body #experience .timeline .timelinePannel h5 {
+  margin-top: 7px;
+  font-size: 1em;
+}
+
 body #experience .timeline .timelinePannel:after {
   position: absolute;
   top: 27px;
@@ -189,6 +213,30 @@ body #experience .timeline .timelinePannel:after {
   border-right: 0 solid white;
   border-bottom: 14px solid transparent;
   content: ' ';
+}
+
+body section {
+  padding: 65px 0 80px 0;
+}
+
+body section .about__heading {
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+body h1, body h2, body h3, body h4, body h5, body h6 {
+  font-weight: bold;
+}
+
+body .img {
+  max-width: 100%;
+  height: auto;
+}
+
+body .img100 {
+  position: relative;
+  max-width: 100%;
+  height: auto;
 }
 
 body .divider {
