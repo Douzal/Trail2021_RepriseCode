@@ -1,8 +1,17 @@
 /* VARIABLES */
-$base-color: rgb(58, 127, 137); //rgb(42, 141, 154);
-$font-color: #bbd1cb;
-$font-white: white;
-$textShadow2px: 2px 2px 2px black;
+$base-color:                rgb(58, 127, 137); //rgb(42, 141, 154);
+$font-color:                #bbd1cb;
+$base-color2:               white;
+$backgroundColorMenu:       #333;
+$verdanaFamily:             'Verdana', 'Geneva', 'Tahoma', 'sans-serif';
+$textShadow2px:             2px 2px 2px black;
+$textShadow1px:             1px 1px 1px black;
+$textShadow2pxBaseColor:    2px 2px 2px black;
+$textShadow05pxBaseColor:   0.5px 0.5px 0.5px $base-color;
+$borderWhite:               1px solid $base-color2;
+$borderBaseColor:           1px solid $base-color;
+$grayscale100:              grayscale(100%);
+$grayscale75:               grayscale(75%);
 
 /* FUNCTIONS */
 /* https://guwii.com/bytes/sass-function-loop-headings-h1h2h3h4h5h6/ */
@@ -19,6 +28,36 @@ body {
     background-color: $base-color;
     font-family: 'lato', 'verdana';
 
+    /* PART MENU */
+    #menu {
+        color: $base-color2 !important;
+        background-color: $base-color;
+        font-size: 1.1em;
+        font-family: $verdanaFamily;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border-bottom: $borderWhite;
+        .navbar-nav {
+            margin-left: 5em;
+            margin-right: 5em;
+            text-align: right;
+        }
+        .navbar-toggler {
+/*             float: right;
+            position: sticky;
+            _display: block !important;
+            right: 10px; */
+        }
+        .nav-link {
+            color: rgba($base-color2, 0.8);
+            margin: 0 6px;
+            &.active, &:hover {
+                background-color: $base-color2 !important;
+                color: rgba($base-color, 0.8) !important;
+            }
+        }
+    }
+
     /* PART ABOUT */
     #about {
         color: $font-color;
@@ -27,21 +66,22 @@ body {
             margin: 0 auto 30px;
             &:hover {
                 _box-shadow: 8px 8px 2px 1px rgba(27, 99, 56, 0.2);
+                filter: $grayscale100;
+                -webkit-filter: $grayscale100;
             }
         }
-
         .about__heading {
             h1 {
-                color: white;
+                color: $base-color2;
                 text-transform: uppercase;
                 margin-bottom: 20px;
             }
             .about__btn {
                 font-weight: bold;
-                color: white;
+                color: $base-color2;
                 text-transform: uppercase;
                 text-decoration: none;
-                border: 1px solid white;
+                border: $borderWhite;
                 border-radius: 3px;
                 display: inline-block;
                 padding: 18px 50px;
@@ -50,7 +90,7 @@ body {
                 // color: red;
             }
             .about__btn:hover {
-                background-color: white;
+                background-color: $base-color2;
                 color: black;
                 _font-weight: bold;
             }
@@ -59,11 +99,8 @@ body {
 
     /* PART SKILLS */
     #skills {
-        background-color: white;
+        background-color: $base-color2;
         color: $base-color;
-        .divider {
-            background-color: $base-color;
-        }
         .progress {
             height: 45px;
             margin: 30px 20px;
@@ -92,13 +129,16 @@ body {
 
     /* PART EXPERIENCE */
     #experience {
-        color: white;
+        color: $base-color2;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         .divider {
-            background-color: white;
+            background-color: $base-color2;
+        }
+        .experience__heading {
+            margin-bottom: 20px;
         }
         .experience__title {
-            color: white;
+            color: $base-color2;
         }
 
         .timeline {
@@ -107,13 +147,18 @@ body {
             padding: 30px 10px;
             position: relative;
 
+            li .timelinePannel:hover {
+                box-shadow: $textShadow2pxBaseColor;
+                text-shadow: $textShadow05pxBaseColor ;
+                _font-size: 101%;
+            }
             &:before {
                 content: ' ';
                 top: 0;
                 bottom: 0;
                 position: absolute;
                 width: 5px;
-                background-color: white;
+                background-color: $base-color2;
                 left: 50%;
                 margin-left: -2.5px;
             }
@@ -141,7 +186,7 @@ body {
                 top: 16px;
                 left: 50%;
                 margin-left: -25px;
-                background-color: white;
+                background-color: $base-color2;
                 border-radius: 50%;
             }
 
@@ -164,20 +209,23 @@ body {
                 }
             }
             .timelinePannel {
-                width: 90%;
+                width: 110%; // modification because prior value of 90% didn't let enought space for text
                 float: right;
                 margin-right: 40px;
-                border: 1px solid white;
+                border: $borderWhite;
                 border-radius: 7px;
                 padding: 20px 25px;
                 position: relative;
                 box-shadow: 0 1px 6px rgba(0,0,0, 0.175);
-                background-color: white;
+                background-color: $base-color2;
                 h3 {
                     margin-top: 5px;
                     text-transform: uppercase;
                     _font-family: 'lato';
                     font-size: 1.2em;
+                    text-decoration: overline underline;
+                    text-underline-offset: 5px;
+                    text-overline-offset: 5px;
                 }
                 h4 {
                     margin-top: 5px;
@@ -194,8 +242,8 @@ body {
                     right: -14px;
                     display: inline-block;
                     border-top: 14px solid transparent;
-                    border-left: 14px solid white;
-                    border-right: 0 solid white;
+                    border-left: 14px solid $base-color2;
+                    border-right: 0 solid $base-color2;
                     border-bottom: 14px solid transparent;
                     content: ' ';
                 }
@@ -205,6 +253,112 @@ body {
 
     }
 
+    /* PART FORMATION */
+    #formation {
+        background-color: $base-color2;
+        color: $base-color;
+        margin: 15px 0;
+        .formation__heading {
+            margin-bottom: 40px;
+        }
+        .formation__block {
+            width: 90%;
+            margin: 0 auto;
+            text-align: center;
+            padding: 30px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            border: $borderBaseColor;
+            margin-bottom: 20px;
+            h3 {
+                text-transform: capitalize;
+                _color: red;
+                _font-weight: bolder; /* does not work on that font */
+                margin: 15px 0;
+                text-shadow: $textShadow1px;
+            }
+            h4, p {
+                font-family: $verdanaFamily;
+                margin-bottom: 20px;
+            }
+            h5 {
+                color: #888;
+                font-size: 15px;
+                margin-bottom: 15px;
+            }
+            span {
+                font-size: 35px;
+            }
+        }
+    }
+
+    /* PART PORTOLIO */
+    #portfolio {
+        color: $base-color2;
+        .portfolio__title {
+            margin-bottom: 40px;
+        } 
+        .divider {
+            background-color: $base-color2;
+        }
+        .col-md-4 {
+            margin-bottom: 20px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            filter: $grayscale75;
+            -webkit-filter: $grayscale75;
+            &:hover {
+                filter: none;
+                -webkit-filter: none;
+            }
+        }
+    }
+
+    /* PART PASSIONS */
+    #passions {
+        background-color: $base-color2;
+        color: $base-color;
+        .passion__title {
+            margin-bottom: 40px;
+        }
+        .passions__carousel__item {
+            padding: 30px 30px 90px;
+            h3 {
+                font-family: $verdanaFamily;
+                font-weight: normal;
+                _text-decoration: overline underline;
+                margin-bottom: 20px;
+            }
+            h4 {
+                margin-left: 70px;
+                margin-right: 70px;
+                font-style: italic;
+            }
+        }
+    }
+
+    /* PART FOOTER */
+    footer {
+        background-color: $backgroundColorMenu;
+        color: $base-color2;
+        padding: 25px;
+        span {
+            color: red;
+            font-size: 25px;
+            line-height: 35px;
+            &:hover {
+                font-size: 27px;
+            }
+        }
+        h5 {
+            font-family: $verdanaFamily;
+            font-weight:normal;
+        }
+    }
+
     /* GENERAL */
     section {
         padding: 65px 0 80px 0;
@@ -212,7 +366,6 @@ body {
             text-align: center;
             padding-bottom: 40px;
         }
-
     }
         
     #{headings(1,6)} {
@@ -234,11 +387,12 @@ body {
         width: 100px;
         height: 2px;
         margin: 0 auto 20px;
+        background-color: $base-color;
     }
 
     .sectionTitle {
-        font-family: 'Verdana', 'Geneva', 'Tahoma', 'sans-serif';
-        font-size: 1.4em;
+        font-family: $verdanaFamily;
+        font-size: 1.8em;
         text-transform: uppercase;
         text-align: center;
         font-weight: bold;

@@ -22,7 +22,27 @@
         <link href="https://fonts.googleapis.com/css2?family=Anton&family=Crete+Round&family=Lato:wght@100&family=Limelight&display=swap" rel="stylesheet" />
 
     </head>
-    <body data-bs-spy="scroll" data-bs-target="">
+    <body data-bs-spy="scroll" data-bs-target="#menu">
+        <!-- MENU -->
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark" id="menu">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"></a><!-- keep it to get the toggler on the right (better to CSS it..) -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                            <a class="nav-link active" href="#about" aria-current="page">About</a>
+                            <a class="nav-link" href="#skills">compétences</a>
+                            <a class="nav-link" href="#experience">Expérience</a>
+                            <a class="nav-link" href="#formation">formation</a>
+                            <a class="nav-link" href="#portfolio">Portfolio</a>
+                            <a class="nav-link" href="#passions">passions</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
         <!-- ABOUT -->
         <section id="about" class="container-fluid">
             <div class="about__profile-pict col-8 col-lg-4">
@@ -101,7 +121,7 @@
                 </div>
     
                 <ul class="timeline">
-                    <!-- EXP PROF 1 -->
+                    <!-- EXP PROF 1 SOCIETE GENERALE -->
                     <li>
                         <div class="timeline__badge"><span class="bi-briefcase"/></div>
                         <div class="timelinePannel__Container">
@@ -127,25 +147,25 @@
                         </div>
                     </li>
     
-                    <!-- EXP PROF 2 -->
+                    <!-- EXP PROF 2 HEINEKEN -->
                     <li>
                         <div class="timeline__badge"><span class="bi-briefcase"/></div>
                         <div class="timelinePannel__Container-inverted">
                             <div class="timelinePannel">
                                 <div class="timelinePannel__heading">
-                                    <h3>societe GENERALE</h3>
-                                    <p class="text-muted"><span class="bi-clock-fill"> (Janvier 2020 – Avril 2020)</span></p>
+                                    <h3>HEINEKEN</h3>
+                                    <p class="text-muted"><span class="bi-clock-fill"> (Octobre 2019 – Décembre 2019)</span></p>
                                     <h4>Consultant/Développeur</h4>
                                     <h5>Poste :</h5>
-                                        Consultant/Développeur : maintenance et amélioration du portail Community Cloud de remédiation KYC ; ce dernier est utilisé par les clients pour charger les documents demandés dans Salesforce tout en communiquant avec des services externes (Jouve, Tessi), notamment pour une analyse RAD/LAD.
+                                        Consultant/Développeur :migration de l'application AirForce1de Salesforce Classique à Salesforce Lightning ; l'application sert essentiellement aux commerciaux Heineken pour suivre les clients, les promotions, les ventes, et leur calendrier.
+                                        Ma part de la mission était orientée plutôt front.                                        
                                     <h5>Activités :</h5>
                                 </div>
                                 <div class="timelinePannel__body">
                                     <ul>
-                                        <li>Points réguliers avec le client pour suivre le besoin et sa réponse</li>
-                                        <li>mise en place / modification de Web Services permettant d'envoyer / recevoir les fichiers chargés</li>
-                                        <li>modifications de l'interface (des composants lightning)</li>
-                                        <li>implémentation des batchs pour la récupération des données de TESSI</li>
+                                        <li>Scan de l'existant permettant la génération d'un backlog</li>
+                                        <li>identification des éléments incompatibles avec l'interface lightning, et de ceux nécessitant adaptation/redisign (tant au niveau du back et du front)</li>
+                                        <li>Création de Lightning Aura Components inédits, et récupération/adaptation/découpage de certaines Visualforce Pages</li>
                                         <li>Utilisation principalement d'APEX, Javascript (jQuery), CSS3, HTML5.</li>
                                     </ul>
                                 </div>
@@ -153,78 +173,77 @@
                         </div>
                     </li>
     
-                    <!-- EXP PROF 3 -->
+                    <!-- EXP PROF 3 HEINEKEN -->
                     <li>
                         <div class="timeline__badge"><span class="bi-briefcase"/></div>
                         <div class="timelinePannel__Container">
                             <div class="timelinePannel">
                                 <div class="timelinePannel__heading">
-                                    <h3>SOCIETE GENERALE</h3>
-                                    <p class="text-muted"><span class="bi-clock-fill"> (Janvier 2020 – Avril 2020)</span></p>
+                                    <h3>HEINEKEN</h3>
+                                    <p class="text-muted"><span class="bi-clock-fill"> (Septembre 2019)</span></p>
                                     <h4>Consultant/Développeur</h4>
                                     <h5>Poste :</h5>
-                                        Consultant/Développeur : maintenance et amélioration du portail Community Cloud de remédiation KYC ; ce dernier est utilisé par les clients pour charger les documents demandés dans Salesforce tout en communiquant avec des services externes (Jouve, Tessi), notamment pour une analyse RAD/LAD.
+                                        Consultant/Développeur : mission Salesforce (AEPX), intervention de TMA sur un bug non reproductible en environnement de production. Bug identifié comme non-déclenchement 'aléatoire' de Processus d'Approbation, qui doit permettre aux acteurs de rôles complémentaires de suivre l'avancement d'une Promotion.
                                     <h5>Activités :</h5>
                                 </div>
                                 <div class="timelinePannel__body">
                                     <ul>
-                                        <li>Points réguliers avec le client pour suivre le besoin et sa réponse</li>
-                                        <li>mise en place / modification de Web Services permettant d'envoyer / recevoir les fichiers chargés</li>
-                                        <li>modifications de l'interface (des composants lightning)</li>
-                                        <li>implémentation des batchs pour la récupération des données de TESSI</li>
-                                        <li>Utilisation principalement d'APEX, Javascript (jQuery), CSS3, HTML5.</li>
+                                        <li>Compréhension du métier - Appréhender efficacement le périmètre du bug et les objets liés</li>
+                                        <li>Identification des éléments & événements agissant sur le déclenchement des Processus d'Approbation</li>
+                                        <li>Points avec le Métier pour mise à jour des SPECS</li>
+                                        <li>Rectification puis tests unitaires en adéquation avec les SPECS à jour.</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </li>
     
-                    <!-- EXP PROF 4 -->
+                    <!-- EXP PROF 4 BABILOU -->
                     <li>
                         <div class="timeline__badge"><span class="bi-briefcase"/></div>
                         <div class="timelinePannel__Container-inverted">
                             <div class="timelinePannel">
                                 <div class="timelinePannel__heading">
-                                    <h3>SOCIETE GENERALE</h3>
-                                    <p class="text-muted"><span class="bi-clock-fill"> (Janvier 2020 – Avril 2020)</span></p>
+                                    <h3>BABILOU</h3>
+                                    <p class="text-muted"><span class="bi-clock-fill"> (Juillet 2019)</span></p>
                                     <h4>Consultant/Développeur</h4>
                                     <h5>Poste :</h5>
-                                        Consultant/Développeur : maintenance et amélioration du portail Community Cloud de remédiation KYC ; ce dernier est utilisé par les clients pour charger les documents demandés dans Salesforce tout en communiquant avec des services externes (Jouve, Tessi), notamment pour une analyse RAD/LAD.
+                                        Consultant/Développeur : mission Salesforce (AEPX),  100% backend - Développement d'une fonctionnalité permettant la création d'un objet custom et de relations avec deux objets préexistants ; il s'agit pour chaque Contrat Complexe d'afficher la liste de toutes les Crèches qui lui sont affectées (sans doublons, en prenant en compte une liste de crèches exclues).
                                     <h5>Activités :</h5>
                                 </div>
                                 <div class="timelinePannel__body">
                                     <ul>
-                                        <li>Points réguliers avec le client pour suivre le besoin et sa réponse</li>
-                                        <li>mise en place / modification de Web Services permettant d'envoyer / recevoir les fichiers chargés</li>
-                                        <li>modifications de l'interface (des composants lightning)</li>
-                                        <li>implémentation des batchs pour la récupération des données de TESSI</li>
-                                        <li>Utilisation principalement d'APEX, Javascript (jQuery), CSS3, HTML5.</li>
+                                        <li>Compréhension du métier - Appréhender efficacement le besoin de la mission, comprendre les objets et liens</li>
+                                        <li>Conception de l'algorithme </li>
+                                        <li>Développement permettant la création / modification / destruction des objets customs</li>
+                                        <li>Insertion du code dans les Triggers adéquats</li>
+                                        <li>Tests unitaires et vérification de la conformité des résultats au Cahier des Charges</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </li>
     
-                    <!-- EXP PROF 5 -->
+                    <!-- EXP PROF 5 GROUPE FED -->
                     <li>
                         <div class="timeline__badge"><span class="bi-briefcase"/></div>
                         <div class="timelinePannel__Container">
                             <div class="timelinePannel">
                                 <div class="timelinePannel__heading">
-                                    <h3>SOCIETE GENERALE</h3>
+                                    <h3>GROUPE FED</h3>
                                     <p class="text-muted"><span class="bi-clock-fill"> (Janvier 2020 – Avril 2020)</span></p>
                                     <h4>Consultant/Développeur</h4>
                                     <h5>Poste :</h5>
-                                        Consultant/Développeur : maintenance et amélioration du portail Community Cloud de remédiation KYC ; ce dernier est utilisé par les clients pour charger les documents demandés dans Salesforce tout en communiquant avec des services externes (Jouve, Tessi), notamment pour une analyse RAD/LAD.
+                                        Consultant/Développeur : mission Salesforce (AEPX), TMA et évolutions de l'application ALFED, application sur Salesforce utilisée par les consultants FED quotidiennement, développée en APEX (principalement en Lightning Components). Configuration de WebServices, tests.
                                     <h5>Activités :</h5>
                                 </div>
                                 <div class="timelinePannel__body">
                                     <ul>
-                                        <li>Points réguliers avec le client pour suivre le besoin et sa réponse</li>
-                                        <li>mise en place / modification de Web Services permettant d'envoyer / recevoir les fichiers chargés</li>
-                                        <li>modifications de l'interface (des composants lightning)</li>
-                                        <li>implémentation des batchs pour la récupération des données de TESSI</li>
-                                        <li>Utilisation principalement d'APEX, Javascript (jQuery), CSS3, HTML5.</li>
+                                        <li>Correction (65%) : rectification de bugs</li>
+                                        <li>Améliorations (35%) : développement de nouvelles fonctionnalités</li>
+                                        <li>Développement en langages APEX, Javascript, HTML5 et CSS3, l'application utilisant principalement des Lightning Aura Components. Requêtes SOQL et SOSL.</li>
+                                        <li>Gestion de projet par sprint, lotissement des tickets & livraison tous les 10-15 jours</li>
+                                        <li>Reporting via utilisation d'un release board, et MER / MEP via changeSet</li>
                                     </ul>
                                 </div>
                             </div>
@@ -234,18 +253,72 @@
             </div>
         </section>
 
-        <!-- EDUCATION -->
-        <section id="education">
+        <!-- FORMATION -->
+        <section id="formation">
             <div class="container">
                 <!-- SECTION HEADER -->
-                <div class="education__divider divider"></div>
-                <div class="education__heading">
-                    <h2 class="education__title sectionTitle">experience</h2>
+                <div class="formation__divider divider"></div>
+                <div class="formation__heading">
+                    <h2 class="formation__title sectionTitle">formation</h2>
+                </div>
             </div>
 
             <div class="row">
-                <div class="col-md-6 col-sm-1"></div>
-                <div class="col-md-6 col-sm-1"></div>
+                <!-- formation 1 -->
+                <div class="col-md-6 col-sm-1">
+                    <div>
+                        <div class="formation__block">
+                            <h5>2021-...</h5>
+                            <span class="bi-award-fill"></span><!-- clock icon -->
+                            <h3>Formations web</h3>
+                            <h4>Udemy</h4>
+                            <div class="formation__divider divider"></div>
+                            <p>Formations via internet</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- formation 2 -->
+                <div class="col-md-6 col-sm-1">
+                    <div>
+                        <div class="formation__block">
+                            <h5>2019</h5>
+                            <span class="bi-award-fill"></span><!-- clock icon -->
+                            <h3>architecte logiciel</h3>
+                            <h4>AFCEPF en alternance</h4>
+                            <div class="formation__divider divider"></div>
+                            <p>Montrouge 92120</p>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- formation 3 -->
+                 <div class="col-md-6 col-sm-1">
+                    <div>
+                        <div class="formation__block">
+                            <h5>2018 </h5>
+                            <span class="bi-award-fill"></span><!-- clock icon -->
+                            <h3>Analyste Informaticien</h3>
+                            <h4>AFCEPF en alternance</h4>
+                            <div class="formation__divider divider"></div>
+                            <p>Montrouge 92120</p>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- formation 4 -->
+                 <div class="col-md-6 col-sm-1">
+                    <div>
+                        <div class="formation__block">
+                            <h5>2015</h5>
+                            <span class="bi-award-fill"></span><!-- clock icon -->
+                            <h3>Licence Economie & Ingénierie Financière</h3>
+                            <h4>Paris IX – Dauphine</h4>
+                            <div class="formation__divider divider"></div>
+                            <p>Porte Dauphine, mention BIEN</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -255,11 +328,102 @@
                 <!-- SECTION HEADER -->
                 <div class="portfolio__divider divider"></div>
                 <div class="portfolio__heading">
-                    <h2 class="portfolio__title sectionTitle">experience</h2>
+                    <h2 class="portfolio__title sectionTitle">portfolio</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="https://facebook.com" target="_blank">
+                        <img src="img/facebook_share.png" class="img-thumbnail" alt="livre des visages"/>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="https://google.com" target="_blank">
+                        <img src="img/google_translate.png" class="img-thumbnail" alt="google traduction"/>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="https://twitter.com" target="_blank">
+                        <img src="img/twitter_video.png" class="img-thumbnail" alt="Tweet"/>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="https://www.youtube.com" target="_blank">
+                        <img src="img/youtube.png" class="img-thumbnail" alt="TonTube"/>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="https://twitter.com" target="_blank">
+                        <img src="img/twitter_retweet.png" class="img-thumbnail" alt="Tweet et retweet !"/>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="https://facebook.com" target="_blank">
+                        <img src="img/facebook_video.png" class="img-thumbnail" alt="Un livre en vidéo ?"/>
+                    </a>
+                </div>
             </div>
         </section>
 
+        <!-- PASSIONS -->
+        <section id="passions">
+            <div class="container">
+                <!-- SECTION HEADER -->
+                <div class="passions__divider divider"></div>
+                <div class="passions__heading">
+                    <h2 class="passions__title sectionTitle">passions</h2>
+                </div>
 
+                <!-- carousel dark from bootsrap -->
+                <div id="passions__carousel" class="carousel carousel-dark slide text-center" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#passions__carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#passions__carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#passions__carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#passions__carousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="passions__carousel__item carousel-item active" data-bs-interval="3000">
+                            <h3>Parachutisme</h3>
+                            <h4>Pratique depuis 2014, l'association SkyDo (association de parachutisme de Dauphine) proposant de former les dauphinois !</h4>
+                        </div>
+                        <div class="passions__carousel__item carousel-item " data-bs-interval="3000">
+                            <h3>Escalade</h3>
+                            <h4>Pratique depuis 2021, après des années à attendre de prendre le temps de me lancer.</h4>
+                        </div>
+                        <div class="passions__carousel__item carousel-item " data-bs-interval="3000">
+                            <h3>Baudelaire</h3>
+                            <h4>Grand poète au verbe fort, qui sait trouver les mots. Connaissance de multiples de ses poèmes, qu'il faudrait d'ailleurs que je révise...</h4>
+                        </div>
+                        <div class="passions__carousel__item carousel-item " data-bs-interval="3000">
+                            <h3>Voyages</h3>
+                            <h4>2021 m'a permi de découvrir la gentillesse et l'accueil chaleureux des albanais, et les contrées lointaines du Mexique et ses magnifiques sites Maya</h4>
+                        </div>
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#passions__carousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#passions__carousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="text-center">
+            <a href="#about"><span class="bi-chevron-up"></span></a>
+            <h5 >@CV Alexis MASSON</h5>
+        </footer>
+
+        <!-- PART SCRIPTS -->
         <!-- jQuery -->
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <!-- AXIOS-->
@@ -273,7 +437,7 @@
         
         <!-- SASS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.9.2/sass.min.js"></script>
-        
+        <!-- dedicated js -->
         <script type="text/javascript" src="script/CVjs.js"></script>
     </body>
 </html>
