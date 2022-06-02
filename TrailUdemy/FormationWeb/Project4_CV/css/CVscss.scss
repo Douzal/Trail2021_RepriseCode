@@ -12,6 +12,7 @@ $borderWhite:               1px solid $base-color2;
 $borderBaseColor:           1px solid $base-color;
 $grayscale100:              grayscale(100%);
 $grayscale75:               grayscale(75%);
+$grayscale25:               grayscale(25%);
 
 /* FUNCTIONS */
 /* https://guwii.com/bytes/sass-function-loop-headings-h1h2h3h4h5h6/ */
@@ -66,8 +67,8 @@ body {
             margin: 0 auto 30px;
             &:hover {
                 _box-shadow: 8px 8px 2px 1px rgba(27, 99, 56, 0.2);
-                filter: $grayscale100;
-                -webkit-filter: $grayscale100;
+                // filter: $grayscale25;
+                // -webkit-filter: $grayscale25;
             }
         }
         .about__heading {
@@ -209,7 +210,7 @@ body {
                 }
             }
             .timelinePannel {
-                width: 110%; // modification because prior value of 90% didn't let enought space for text
+                width: 100%; // modification because prior value of 90% didn't let enought space for text
                 float: right;
                 margin-right: 40px;
                 border: $borderWhite;
@@ -314,6 +315,37 @@ body {
                 filter: none;
                 -webkit-filter: none;
             }
+        }
+        .row p {
+            // margin-bottom: 50px;
+            // font-size: 2em;
+            // padding-bottom: 20px;
+            // visibility: hidden;
+        }
+        .tooltipNOBOOTSRAP {
+            // position: relative;
+            // display: inline-block;
+            // border-bottom: 1px dotted black;
+            visibility: visible;
+        }
+        .tooltipNOBOOTSRAP:hover .tooltiptext2 {
+            visibility: visible;
+        }
+        .tooltiptext2 {
+            _visibility: hidden;
+            width: 120px;
+            height: 100px;
+            background-color: black;
+            color: #333;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            
+            /* Position the tooltip */
+            position: absolute;
+            z-index: 1;
+            top: -5px;
+            left: 105%;
         }
     }
 

@@ -60,8 +60,6 @@ body #about .about__profile-pict {
 body #about .about__profile-pict:hover {
   _-webkit-box-shadow: 8px 8px 2px 1px rgba(27, 99, 56, 0.2);
   _        box-shadow: 8px 8px 2px 1px rgba(27, 99, 56, 0.2);
-  filter: grayscale(100%);
-  -webkit-filter: grayscale(100%);
 }
 
 body #about .about__heading h1 {
@@ -220,7 +218,7 @@ body #experience .timeline .timelinePannel__Container-inverted .timelinePannel:a
 }
 
 body #experience .timeline .timelinePannel {
-  width: 110%;
+  width: 100%;
   float: right;
   margin-right: 40px;
   border: 1px solid white;
@@ -336,6 +334,30 @@ body #portfolio img {
 body #portfolio img:hover {
   filter: none;
   -webkit-filter: none;
+}
+
+body #portfolio .tooltipNOBOOTSRAP {
+  visibility: visible;
+}
+
+body #portfolio .tooltipNOBOOTSRAP:hover .tooltiptext2 {
+  visibility: visible;
+}
+
+body #portfolio .tooltiptext2 {
+  _visibility: hidden;
+  width: 120px;
+  height: 100px;
+  background-color: black;
+  color: #333;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 105%;
 }
 
 body #passions {

@@ -140,6 +140,10 @@ margin: 80px 0;
 
 header {
     height: 120px;
+    position:sticky;
+    top: 0;
+    background-color:white;
+    border-bottom: 1px solid black;
 }
 
 header h1 {
@@ -189,6 +193,10 @@ ul {
     text-align: center;
     margin-bottom: 20px;
 }
+
+/* #possibilities .overlay::after, #possibilities .overlay::before {
+    box-sizing: none !important;
+} */
 
 .clear {
     clear: both;
@@ -251,6 +259,14 @@ label {
 }
 
 input[type="text"] {
+    padding: 10px;
+    font-size: 20px;
+    margin-right: 20px;
+    border: 2px solid #ddd;
+    border-radius: 3px;
+}
+
+form input[type="email"] {
     padding: 10px;
     font-size: 20px;
     margin-right: 20px;
